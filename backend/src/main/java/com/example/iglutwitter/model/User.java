@@ -1,4 +1,4 @@
-package com.example.iglutwitter;
+package com.example.iglutwitter.model;
 
 import org.springframework.data.annotation.Id;
 

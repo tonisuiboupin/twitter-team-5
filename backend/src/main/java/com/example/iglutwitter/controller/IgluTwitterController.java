@@ -1,4 +1,4 @@
-package com.example.iglutwitter;
+package com.example.iglutwitter.controller;
 
 import java.util.List;
 import java.util.concurrent.CopyOnWriteArrayList;
@@ -10,35 +10,13 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.example.iglutwitter.model.Tweet;
+
 @CrossOrigin(origins = "*")
 @RestController
 public class IgluTwitterController{
 
     private CopyOnWriteArrayList<Tweet> tweets = new CopyOnWriteArrayList<>();
-
-    public static class Tweet{
-        private final long id;
-        private final String name;
-        private final String txt;
-
-        public Tweet( long id, String name, String txt ){
-            this.id = id;
-            this.name = name;
-            this.txt = txt;
-        }
-
-        public long getId(){
-            return id;
-        }
-
-        public String getTxt(){
-            return txt;
-        }
-
-        public String getName(){
-            return name;
-        }
-    }
 
     @RequestMapping("/")
     public String index(){
@@ -52,6 +30,6 @@ public class IgluTwitterController{
 
     @GetMapping("/api/tweet/get")
     public List<Tweet> getTweets( String name ){
-        return tweets.stream().filter( tweet -> tweet.name.equals( name ) ).collect( Collectors.toList() );
+        return tweets.stream().filter( tweet -> tweet.getName().equals( name ) ).collect( Collectors.toList() );
     }
 }
