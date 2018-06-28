@@ -5,6 +5,9 @@ import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
+import com.example.iglutwitter.model.User;
+import com.example.iglutwitter.repository.UserRepository;
+
 @SpringBootApplication
 public class IgluTwitterApplication implements CommandLineRunner{
 
