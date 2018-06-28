@@ -2,6 +2,7 @@ package com.example.iglutwitter.controller;
 
 import java.math.BigInteger;
 import java.util.List;
+import java.util.stream.Collectors;
 
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -10,7 +11,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.example.iglutwitter.model.Tweet;
+import com.example.iglutwitter.dto.TweetDto;
 import com.example.iglutwitter.model.User;
 import com.example.iglutwitter.service.IgluTwitterService;
 
@@ -33,13 +34,17 @@ public class IgluTwitterController{
         twitterService.add( userId, txt );
     }
 
-    @GetMapping("/api/tweet/get")
-    public List<Tweet> getTweets( BigInteger userId ){
-        return twitterService.getTweetByUserId( userId );
+    @GetMapping("/api/user/{userId}/tweets")
+    public List<TweetDto> getTweets( BigInteger userId ){
+        return twitterService.getTweetByUserId( userId ).stream()
+                .map( tweet -> new TweetDto( tweet.getId(), tweet.getUserId(), twitterService.findUserById( tweet.getUserId() ).getUserName(),
+                        tweet.getTxt() ) )
+                .collect( Collectors.toList() );
     }
 
     @GetMapping(path = "/api/user/{userId}")
     public User getUser( @PathVariable("userId") BigInteger userId ){
         return twitterService.findUserById( userId );
     }
+
 }

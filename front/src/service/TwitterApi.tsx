@@ -1,5 +1,6 @@
 import axios, { AxiosResponse } from 'axios';
 import { IProfile } from "../App";
+import { ITweet } from "../store/TwitterStore";
 
 const BASE_URL = 'http://localhost:8080/';
 
@@ -11,6 +12,10 @@ class TwitterApi {
     
     static getUserFromApi = async (userId: number): Promise<AxiosResponse<IProfile>> => {
         return axios.get(`${BASE_URL}api/user/${userId}`);
+    };
+    
+    static getUserTweets = async (userId: number): Promise<AxiosResponse<ITweet[]>> => {
+        return axios.get(`${BASE_URL}api/user/${userId}/tweets`);
     };
 }
 
