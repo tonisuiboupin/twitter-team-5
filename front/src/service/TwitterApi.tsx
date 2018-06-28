@@ -18,6 +18,10 @@ class TwitterApi {
         return axios.get(`${BASE_URL}api/user/${userId}/tweets`);
     };
 
+    static authenticate = async (username: string, password: string): Promise<AxiosResponse<ITweet[]>> => {
+        return axios.get(`${BASE_URL}/api/auth?name=` + username + 'password=' + password);
+    };
+
     static saveTweet = async (tweetMessage: string) => {
         fetch( `${BASE_URL}api/tweet/post`, {
             method: 'POST',
