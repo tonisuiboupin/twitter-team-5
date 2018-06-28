@@ -1,5 +1,5 @@
 import axios, { AxiosResponse } from 'axios';
-import { IProfile } from "../App";
+import IProfile from "../modal/IProfile";
 
 const BASE_URL = 'http://localhost:8080/';
 
