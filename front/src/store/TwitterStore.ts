@@ -13,8 +13,10 @@ class TwitterStore {
     @observable profile: IProfile;
 
     @observable tweets: ITweet[];
+    @observable userId: string;
 
     constructor() {
+        this.userId = window.location.pathname.substring(1);
         this.tweetMessage = '';
         this.tweets = [];/* [{username:"Katy Perry", txt:"Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet aut cumque debitis dicta ducimus, exercitationem fuga magnam modi nostrum possimus quas quasi quisquam sed sint soluta tempora vel! Ad, voluptas", id: 1},
                        {username:"Toomas Lyys", txt:"Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet aut cumque debitis dicta ducimus, exercitationem fuga magnam modi nostrum possimus quas quasi quisquam sed sint soluta tempora vel! Ad, voluptas", id: 2}]; */
@@ -24,7 +26,7 @@ class TwitterStore {
     @action
     public fetchTweets = async () => {
         try {
-            const response = await TwitterApi.getUserTweets(1);
+            const response = await TwitterApi.getUserTweets(this.userId);
             runInAction(() => {
                 if (response.data) {
                     this.tweets = response.data;
@@ -42,7 +44,7 @@ class TwitterStore {
 
     public getProfile = async () => {
         try {
-            const response = await TwitterApi.getUserFromApi(1);
+            const response = await TwitterApi.getUserFromApi(this.userId);
             runInAction(() => {
                 console.log(response);
                 this.profile = response.data;
