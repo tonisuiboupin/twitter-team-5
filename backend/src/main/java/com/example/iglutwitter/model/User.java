@@ -16,11 +16,13 @@ public class User{
     private String userName;
     private String firstName;
     private String lastName;
+    private char[] password;
 
-    public User( String userName, String firstName, String lastName ){
+    public User( String userName, String firstName, String lastName, char[] password ){
         this.userName = userName;
         this.firstName = firstName;
         this.lastName = lastName;
+        this.password = password;
     }
 
     @Override

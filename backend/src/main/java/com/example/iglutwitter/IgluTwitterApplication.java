@@ -28,8 +28,8 @@ public class IgluTwitterApplication implements CommandLineRunner{
         userRepository.deleteAll();
 
         // save a couple of customers
-        userRepository.save( new User( "alice", "Alice", "Smith" ) );
-        userRepository.save( new User( "bob", "Bob", "Smith" ) );
+        userRepository.save( new User( "alice", "Alice", "Smith", "asd".toCharArray() ) );
+        userRepository.save( new User( "bob", "Bob", "Smith", "asd".toCharArray() ) );
 
         // fetch all customers
         System.out.println( "Customers found with findAll():" );
