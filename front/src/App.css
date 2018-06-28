@@ -66,3 +66,11 @@
   position: absolute;
   right: 0;
 }
+
+.login-modal {
+  background-color: white;
+  width: 960px;
+  margin: 0 auto;
+  margin-top: 200px;
+  height: 400px;
+}

@@ -5,7 +5,8 @@ import Header from "./component/Header";
 import Tweet from "./component/Tweet";
 import TweetWriter from "./component/TweetWriter";
 import Menu from "./component/Menu";
-import { observer } from 'mobx-react';
+import TwitterStore from "./store/TwitterStore";
+import { inject, observer } from 'mobx-react';
 
 export interface IProfile {
     firstName: string;
@@ -18,21 +19,23 @@ export interface ITweet {
     id: number;
 }
 
-// interface IAppProps {}
+interface IAppProps {
+    twitterStore?: TwitterStore;
+}
 
+@inject('twitterStore')
 @observer
-class App extends React.Component /*<IAppProps> */ {
+class App extends React.Component<IAppProps> {
     
-    private tweets : ITweet[];
+    private twitterStore: TwitterStore;
 
-    constructor() {
-        super({});
-        this.tweets = [{username:"Katy Perry", txt:"Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet aut cumque debitis dicta ducimus, exercitationem fuga magnam modi nostrum possimus quas quasi quisquam sed sint soluta tempora vel! Ad, voluptas", id: 1},
-                       {username:"Toomas Lyys", txt:"Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet aut cumque debitis dicta ducimus, exercitationem fuga magnam modi nostrum possimus quas quasi quisquam sed sint soluta tempora vel! Ad, voluptas", id: 2}];
+    constructor(props: IAppProps) {
+        super(props);
+        this.twitterStore = props.twitterStore;
     }
     
     public getTweets() {
-        return this.tweets && this.tweets.map(tweet => 
+        return this.twitterStore.tweets && this.twitterStore.tweets.map(tweet => 
             <Tweet username={tweet.username} txt={tweet.txt} key={tweet.id} />
         )
     }

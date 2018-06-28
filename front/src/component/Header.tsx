@@ -3,6 +3,7 @@ import {AppBar, Toolbar, Button } from "@material-ui/core";
 import HomeIcon from '@material-ui/icons/Home'
 import NotificationIcon from '@material-ui/icons/Notifications'
 import MessageIcon from '@material-ui/icons/Message'
+import LoginModal from "./LoginModal";
 
 class Header extends React.Component {
     render() {
@@ -19,9 +20,7 @@ class Header extends React.Component {
                         <Button className="message-icon" color="inherit">
                             <MessageIcon /> Messages
                         </Button>
-                        <Button className="login-button" variant="contained" color="primary">
-                            Login
-                        </Button>
+                        <LoginModal />
                     </Toolbar>
                 </AppBar>
             </div>
