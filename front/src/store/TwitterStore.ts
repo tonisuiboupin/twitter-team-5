@@ -1,4 +1,5 @@
 import {computed, observable, action, runInAction} from "mobx";
+import IProfile from "../modal/IProfile";
 import TwitterApi from "../service/TwitterApi";
 
 export interface ITweet {
@@ -9,6 +10,7 @@ export interface ITweet {
 
 class TwitterStore {
     @observable tweetMessage: string;
+    @observable profile: IProfile;
 
     @observable tweets: ITweet[];
 
@@ -37,6 +39,18 @@ class TwitterStore {
     get getTweetMessage(): string {
         return this.tweetMessage;
     }
+
+    public getProfile = async () => {
+        try {
+            const response = await TwitterApi.getUserFromApi(1);
+            runInAction(() => {
+                console.log(response);
+                this.profile = response.data;
+            });
+        } catch (e) {
+            console.log(e);
+        }
+    };
 
 }
 
