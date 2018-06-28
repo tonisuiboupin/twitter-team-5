@@ -1,32 +1,50 @@
 package com.example.iglutwitter;
 
-import java.util.Arrays;
-
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.context.ApplicationContext;
-import org.springframework.context.annotation.Bean;
 
 @SpringBootApplication
-public class IgluTwitterApplication {
+public class IgluTwitterApplication implements CommandLineRunner{
 
-	public static void main(String[] args) {
-		SpringApplication.run(IgluTwitterApplication.class, args);
-	}
+    private final UserRepository userRepository;
 
-	@Bean
-	public CommandLineRunner commandLineRunner( ApplicationContext ctx) {
-		return args -> {
+    @Autowired public IgluTwitterApplication( UserRepository userRepository ){
+        this.userRepository = userRepository;
+    }
 
-			System.out.println("Let's inspect the beans provided by Spring Boot:");
+    public static void main( String[] args ){
+        SpringApplication.run( IgluTwitterApplication.class, args );
+    }
 
-			String[] beanNames = ctx.getBeanDefinitionNames();
-			Arrays.sort(beanNames);
-			for (String beanName : beanNames) {
-				System.out.println(beanName);
-			}
+    @Override
+    public void run( String... args ) throws Exception{
 
-		};
-	}
+        userRepository.deleteAll();
+
+        // save a couple of customers
+        userRepository.save( new User( 1, "alice", "Alice", "Smith" ) );
+        userRepository.save( new User( 2, "bob", "Bob", "Smith" ) );
+
+        // fetch all customers
+        System.out.println( "Customers found with findAll():" );
+        System.out.println( "-------------------------------" );
+        for( User customer : userRepository.findAll() ){
+            System.out.println( customer );
+        }
+        System.out.println();
+
+        // fetch an individual customer
+        System.out.println( "Customer found with findByFirstName('Alice'):" );
+        System.out.println( "--------------------------------" );
+        System.out.println( userRepository.findByUserName( "alice" ) );
+
+        System.out.println( "Customers found with findByLastName('Smith'):" );
+        System.out.println( "--------------------------------" );
+        for( User customer : userRepository.findByLastName( "Smith" ) ){
+            System.out.println( customer );
+        }
+
+    }
 }
