@@ -12,14 +12,24 @@ class App extends React.Component {
                 <Grid container spacing={24}>
                     <Grid item xs={12}>
                         <Paper className="cover-paper">
-                            <img src="http://via.placeholder.com/1000x400" />
+                            <img src="http://via.placeholder.com/1000x400"/>
                         </Paper>
                     </Grid>
                 </Grid>
-                <Menu />
-                <p className="App-intro">
-                    To get started, edit <code>src/App.tsx</code> and save to reload.
-                </p>
+                <div className="content-wrapper">
+                    <Menu/>
+                    <div className="profile">
+                        <p>Name: Katy Perry</p>
+                        <p>Age: 76</p>
+                        <p>Phone: 112</p>
+                    </div>
+                    <div className="tweets">
+                        <div className="tweet">
+                            <h3>Katy Perry</h3>
+                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet aut cumque debitis dicta ducimus, exercitationem fuga magnam modi nostrum possimus quas quasi quisquam sed sint soluta tempora vel! Ad, voluptas.</p>
+                        </div>
+                    </div>
+                </div>
             </div>
         );
     }
