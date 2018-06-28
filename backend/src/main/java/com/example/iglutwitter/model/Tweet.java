@@ -1,24 +1,17 @@
 package com.example.iglutwitter.model;
+import java.math.BigInteger;
+
+import org.springframework.data.annotation.Id;
+
 public class Tweet{
-    private final long id;
-    private final String name;
-    private final String txt;
 
-    public Tweet( long id, String name, String txt ){
-        this.id = id;
-        this.name = name;
+    @Id
+    private BigInteger id;
+    private BigInteger userId;
+    private String txt;
+
+    public Tweet( BigInteger userId, String txt ){
+        this.userId = userId;
         this.txt = txt;
-    }
-
-    public long getId(){
-        return id;
-    }
-
-    public String getTxt(){
-        return txt;
-    }
-
-    public String getName(){
-        return name;
     }
 }

@@ -1,7 +1,5 @@
 package com.example.iglutwitter.service;
 
-import java.util.Date;
-
 import org.springframework.stereotype.Service;
 
 import com.example.iglutwitter.model.User;
@@ -18,7 +16,7 @@ public class AuthenticationService{
     public String createAccount( String userName, char[] password ){
         String validationResult = validateUserCreation( userName, password );
         if( validationResult == null ){
-            userRepo.insert( new User( new Date().getTime(), userName, userName, userName ) );
+            userRepo.insert( new User( userName, userName, userName ) );
         }
         return validationResult;
     }

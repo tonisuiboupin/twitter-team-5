@@ -1,19 +1,25 @@
 package com.example.iglutwitter.model;
 
+import java.math.BigInteger;
+
 import org.springframework.data.annotation.Id;
 
-import lombok.AllArgsConstructor;
 import lombok.Getter;
 
-@AllArgsConstructor
 @Getter
 public class User{
 
     @Id
-    private long id;
+    private BigInteger id;
     private String userName;
     private String firstName;
     private String lastName;
+
+    public User( String userName, String firstName, String lastName ){
+        this.userName = userName;
+        this.firstName = firstName;
+        this.lastName = lastName;
+    }
 
     @Override
     public String toString(){
