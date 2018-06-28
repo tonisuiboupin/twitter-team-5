@@ -5,7 +5,6 @@ import Header from "./component/Header";
 import Menu from "./component/Menu";
 
 class App extends React.Component {
-
     public render() {
         return (
             <div className="App">
@@ -19,7 +18,17 @@ class App extends React.Component {
                 </Grid>
                 <div className="content-wrapper">
                     <Menu/>
-                    <div className="App-intro"/>
+                    <div className="profile">
+                        <p>Name: Katy Perry</p>
+                        <p>Age: 76</p>
+                        <p>Phone: 112</p>
+                    </div>
+                    <div className="tweets">
+                        <div className="tweet">
+                            <h3>Katy Perry</h3>
+                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet aut cumque debitis dicta ducimus, exercitationem fuga magnam modi nostrum possimus quas quasi quisquam sed sint soluta tempora vel! Ad, voluptas.</p>
+                        </div>
+                    </div>
                 </div>
             </div>
         );
