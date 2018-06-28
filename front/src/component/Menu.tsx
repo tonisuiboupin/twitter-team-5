@@ -1,5 +1,5 @@
 import * as React from 'react';
-import {Paper} from "@material-ui/core";
+import {Grid, Paper} from "@material-ui/core";
 
 class Menu extends React.Component {
     render() {
