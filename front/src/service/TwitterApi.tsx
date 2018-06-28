@@ -9,8 +9,8 @@ class TwitterApi {
             .then(response => console.log(response));
     };
     
-    static getProfileFromApi = async (profileId: number): Promise<AxiosResponse<IProfile>> => {
-        return axios.get(`${BASE_URL}api/profile/${profileId}`);
+    static getUserFromApi = async (userId: number): Promise<AxiosResponse<IProfile>> => {
+        return axios.get(`${BASE_URL}api/user/${userId}`);
     };
 }
 

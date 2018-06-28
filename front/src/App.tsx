@@ -12,15 +12,22 @@ export interface IProfile {
     lastName: string;
 }
 
+// interface IAppProps {}
+
 @observer
-class App extends React.Component {
+class App extends React.Component /*<IAppProps> */ {
     
     @observable
     private profile: IProfile;
+
+    constructor(/* props: IAppProps */) {
+        super({});// props);
+        this.getProfile();
+    }
     
     public getProfile = async () => {
         try {
-            const response = await TwitterApi.getProfileFromApi(1);
+            const response = await TwitterApi.getUserFromApi(1);
             runInAction(() => {
                 console.log(response);
                 this.profile = response.data;
