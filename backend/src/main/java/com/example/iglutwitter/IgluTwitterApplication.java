@@ -5,12 +5,16 @@ import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
-@SpringBootApplication
+import com.example.iglutwitter.model.User;
+import com.example.iglutwitter.repository.UserRepository;
+
+@SpringBootApplication(scanBasePackages = {"com.example.iglutwitter"})
 public class IgluTwitterApplication implements CommandLineRunner{
 
     private final UserRepository userRepository;
 
-    @Autowired public IgluTwitterApplication( UserRepository userRepository ){
+    @Autowired
+    public IgluTwitterApplication( UserRepository userRepository ){
         this.userRepository = userRepository;
     }
 
