@@ -29,9 +29,7 @@ public class AuthenticationService{
     }
 
     private boolean isUserNameTaken( String userName ){
-        User user = userRepo.findByUserName( userName );
-        System.out.println( "user: " + user );
-        return user != null;
+        return userRepo.findByUserName( userName ) != null;
     }
 
 }

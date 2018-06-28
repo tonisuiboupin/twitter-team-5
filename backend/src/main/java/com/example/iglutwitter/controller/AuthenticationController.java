@@ -27,7 +27,10 @@ public class AuthenticationController{
 
     //@PostMapping(params = {"name", "password"})
     @RequestMapping("/api/user/post")
-    public BigInteger createAccount( @RequestParam("userName") String userName, @RequestParam("firstName") String firstname, @RequestParam("lastName") String lastName, @RequestParam("password") char[] password ){
+    public BigInteger createAccount( @RequestParam("userName") String userName,
+                                     @RequestParam("firstName") String firstname,
+                                     @RequestParam("lastName") String lastName,
+                                     @RequestParam("password") char[] password ){
         return authenticationService.createAccount( userName, firstname, lastName, password );
     }
 }
