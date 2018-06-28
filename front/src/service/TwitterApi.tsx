@@ -8,11 +8,6 @@ class TwitterApi {
         axios.get(`${BASE_URL}`)
             .then(response => console.log(response));
     };
-
-    static sendTweet = (tweet: string) => {
-        axios.post(`${BASE_URL}/tweet`, tweet)
-            .then(response => console.log(response));
-    };
     
     static getProfileFromApi = async (profileId: number): Promise<AxiosResponse<IProfile>> => {
         return axios.get(`${BASE_URL}api/profile/${profileId}`);
