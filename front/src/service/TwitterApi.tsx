@@ -17,6 +17,10 @@ class TwitterApi {
     static getUserTweets = async (userId: number): Promise<AxiosResponse<ITweet[]>> => {
         return axios.get(`${BASE_URL}api/user/${userId}/tweets`);
     };
+
+    static authenticate = async (username: string, password: string): Promise<AxiosResponse<ITweet[]>> => {
+        return axios.get(`${BASE_URL}/api/auth?name=` + username + 'password=' + password);
+    };
 }
 
 export default TwitterApi;
