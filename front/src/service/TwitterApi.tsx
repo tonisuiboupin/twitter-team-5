@@ -10,17 +10,31 @@ class TwitterApi {
             .then(response => console.log(response));
     };
     
-    static getUserFromApi = async (userId: number): Promise<AxiosResponse<IProfile>> => {
+    static getUserFromApi = async (userId: string): Promise<AxiosResponse<IProfile>> => {
         return axios.get(`${BASE_URL}api/user/${userId}`);
     };
-    
-    static getUserTweets = async (userId: number): Promise<AxiosResponse<ITweet[]>> => {
+
+    static getUserTweets = async (userId: string): Promise<AxiosResponse<ITweet[]>> => {
         return axios.get(`${BASE_URL}api/user/${userId}/tweets`);
     };
 
     static authenticate = async (username: string, password: string): Promise<AxiosResponse<ITweet[]>> => {
         return axios.get(`${BASE_URL}/api/auth?name=` + username + 'password=' + password);
     };
+
+    static saveTweet = async (tweetMessage: string) => {
+        fetch( `${BASE_URL}api/tweet/post`, {
+            method: 'POST',
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({
+                userId: 28227219408117389584822379739,
+                txt: tweetMessage,
+            })
+        })
+    }
 }
 
 export default TwitterApi;

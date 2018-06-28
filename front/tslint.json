@@ -5,7 +5,8 @@
     "ordered-imports": false,
     "jsx-boolean-value": false,
     "no-console": false,
-    "jsx-no-lambda": false
+    "jsx-no-lambda": false,
+    "object-literal-sort-keys": false
   },
   "linterOptions": {
     "exclude": [
