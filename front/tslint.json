@@ -4,7 +4,8 @@
     "member-access": false,
     "ordered-imports": false,
     "jsx-boolean-value": false,
-    "no-console": false
+    "no-console": false,
+    "no-empty": false
   },
   "linterOptions": {
     "exclude": [

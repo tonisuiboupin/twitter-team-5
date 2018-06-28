@@ -3,28 +3,28 @@ import './App.css';
 import {Grid, Paper} from "@material-ui/core";
 import Header from "./component/Header";
 import Menu from "./component/Menu";
-import TwitterApi from "./service/TwitterApi";
+import {inject, observer} from "mobx-react";
+import TwitterStore from "./store/TwitterStore";
 
-class App extends React.Component {
+export interface IAppProps {
+    twitterStore?: TwitterStore;
+}
 
-    constructor(props) {
-        super(props);
-        this.state = {value: ''};
+@inject('twitterStore')
+@observer
+class App extends React.Component<IAppProps> {
 
-        this.handleChange = this.handleChange.bind(this);
-        this.handleSubmit = this.handleSubmit.bind(this);
-    }
 
-    handleChange(event) {
-        this.setState({value: event.target.value});
-    }
-
-    handleSubmit(event) {
-        alert('A name was submitted: ' + this.state.value);
-        event.preventDefault();
+    handleChange(event: any) {
+        const {twitterStore} = this.props;
+        twitterStore.sendTweet(event.target.value);
     }
 
     public render() {
+        const {twitterStore} = this.props;
+
+        const value = twitterStore.tweetMessage;
+
         return (
             <div className="App">
                 <Header/>
@@ -37,19 +37,18 @@ class App extends React.Component {
                 </Grid>
                 <div className="content-wrapper">
                     <Menu/>
+                    {value}
                     <div className="App-intro">
-                        <form onSubmit={TwitterApi.sendTweet}>
-                            <label>
-                                Name:
-                                <input type="text" value={this.state.value} />
-                            </label>
-                            <input type="submit" value="Submit" />
-                        </form>
+                        <p>{value}</p>
+                        <input type="text"
+                               onChange={twitterStore.testFn} />
+                        <button value="test" onClick={twitterStore.testFn}/>
                     </div>
                 </div>
             </div>
         );
     }
+
 }
 
 export default App;
