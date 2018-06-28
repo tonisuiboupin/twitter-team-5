@@ -11,4 +11,24 @@
   height: 50px;
 }
 
+.content-wrapper {
+  margin: 0 auto;
+  width: 960px;
+}
 
+.menu{
+  display: flex;
+  justify-items: flex-start;
+}
+
+.profile-wrapper{
+  position: relative;
+  width: 300px;
+}
+
+.profile-wrapper > img {
+  position: absolute;
+  top: -100px;
+  left: 0;
+  border: 5px solid red;
+}

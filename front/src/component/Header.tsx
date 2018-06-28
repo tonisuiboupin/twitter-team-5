@@ -3,6 +3,7 @@ import {AppBar, Toolbar, Button } from "@material-ui/core";
 import HomeIcon from '@material-ui/icons/Home'
 import NotificationIcon from '@material-ui/icons/Notifications'
 import MessageIcon from '@material-ui/icons/Message'
+import TwitterApi from "../service/TwitterApi";
 
 
 class Header extends React.Component {
@@ -11,7 +12,7 @@ class Header extends React.Component {
             <div className="header">
                 <AppBar position="static" color="default">
                     <Toolbar>
-                        <Button className="home-icon" color="inherit">
+                        <Button className="home-icon" color="inherit" onClick={TwitterApi.getHelloWorld}>
                             <HomeIcon /> Menu
                         </Button>
                         <Button className="notification-icon" color="inherit">
