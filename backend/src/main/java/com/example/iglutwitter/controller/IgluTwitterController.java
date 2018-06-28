@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.concurrent.CopyOnWriteArrayList;
 import java.util.stream.Collectors;
 
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -30,9 +31,9 @@ public class IgluTwitterController{
         return "Greetings from Iglu Twitter!";
     }
 
-    @GetMapping(path = "/profile/{profileId}")
-    public User getProfile( @PathVariable("profileId") long profileId ){
-        return userRepository.findById( profileId );
+    @GetMapping(path = "/api/profile/{profileId}")
+    public ResponseEntity<User> getProfile( @PathVariable("profileId") long profileId ){
+        return ResponseEntity.ok( userRepository.findById( profileId ) );
     }
 
     @RequestMapping("/api/tweet/post")

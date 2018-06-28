@@ -1,6 +1,7 @@
-import axios from 'axios';
+import axios, { AxiosResponse } from 'axios';
+import { IProfile } from "../App";
 
-const BASE_URL = 'http://192.168.3.188:8080/';
+const BASE_URL = 'http://localhost:8080/';
 
 class TwitterApi {
     static getHelloWorld = () => {
@@ -11,6 +12,10 @@ class TwitterApi {
     static sendTweet = (tweet: string) => {
         axios.post(`${BASE_URL}/tweet`, tweet)
             .then(response => console.log(response));
+    };
+    
+    static getProfileFromApi = async (profileId: number): Promise<AxiosResponse<IProfile>> => {
+        return axios.get(`${BASE_URL}api/profile/${profileId}`);
     };
 }
 
