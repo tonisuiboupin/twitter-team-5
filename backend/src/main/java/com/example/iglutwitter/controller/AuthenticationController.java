@@ -1,5 +1,7 @@
 package com.example.iglutwitter.controller;
 
+import java.math.BigInteger;
+
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -25,7 +27,7 @@ public class AuthenticationController{
 
     //@PostMapping(params = {"name", "password"})
     @RequestMapping("/api/user/post")
-    public String createAccount( @RequestParam("name") String accountName, @RequestParam("password") char[] password ){
+    public BigInteger createAccount( @RequestParam("name") String accountName, @RequestParam("password") char[] password ){
         return authenticationService.createAccount( accountName, password );
     }
 }

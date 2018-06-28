@@ -1,5 +1,7 @@
 package com.example.iglutwitter.service;
 
+import java.math.BigInteger;
+
 import org.springframework.stereotype.Service;
 
 import com.example.iglutwitter.model.User;
@@ -13,12 +15,13 @@ public class AuthenticationService{
 
     private final UserRepository userRepo;
 
-    public String createAccount( String userName, char[] password ){
+    public BigInteger createAccount( String userName, char[] password ){
         String validationResult = validateUserCreation( userName, password );
+        User user = new User();
         if( validationResult == null ){
-            userRepo.insert( new User( userName, userName, userName ) );
+            user = userRepo.insert( new User( userName, userName, userName ) );
         }
-        return validationResult;
+        return user.getId();
     }
 
     private String validateUserCreation( String accountName, char[] password ){
