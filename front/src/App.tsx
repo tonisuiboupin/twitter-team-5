@@ -37,6 +37,16 @@ class App extends React.Component<IAppProps> {
                 </Grid>
                 <div className="content-wrapper">
                     <Menu/>
+                    <div className="profile">
+                        <p>Name: Katy Perry</p>
+                        <p>Age: 76</p>
+                        <p>Phone: 112</p>
+                    </div>
+                    <div className="tweets">
+                        <div className="tweet">
+                            <h3>Katy Perry</h3>
+                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet aut cumque debitis dicta ducimus, exercitationem fuga magnam modi nostrum possimus quas quasi quisquam sed sint soluta tempora vel! Ad, voluptas.</p>
+                        </div>
                     {value}
                     <div className="App-intro">
                         <p>{value}</p>
@@ -48,7 +58,6 @@ class App extends React.Component<IAppProps> {
             </div>
         );
     }
-
 }
 
 export default App;

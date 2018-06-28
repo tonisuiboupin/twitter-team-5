@@ -1,22 +1,27 @@
 package com.example.iglutwitter.controller;
 
+import java.math.BigInteger;
 import java.util.List;
-import java.util.concurrent.CopyOnWriteArrayList;
-import java.util.stream.Collectors;
 
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.example.iglutwitter.model.Tweet;
+import com.example.iglutwitter.model.User;
+import com.example.iglutwitter.service.IgluTwitterService;
 
+import lombok.RequiredArgsConstructor;
+
+@RequiredArgsConstructor
 @CrossOrigin(origins = "*")
 @RestController
 public class IgluTwitterController{
 
-    private CopyOnWriteArrayList<Tweet> tweets = new CopyOnWriteArrayList<>();
+    private final IgluTwitterService twitterService;
 
     @RequestMapping("/")
     public String index(){
@@ -24,12 +29,17 @@ public class IgluTwitterController{
     }
 
     @RequestMapping("/api/tweet/post")
-    public void twiiiiiit( @RequestParam String name, @RequestParam String txt ){
-        tweets.add( new Tweet( tweets.size(), name, txt ) );
+    public void twiiiiiit( @RequestParam BigInteger userId, @RequestParam String txt ){
+        twitterService.add( userId, txt );
     }
 
     @GetMapping("/api/tweet/get")
-    public List<Tweet> getTweets( String name ){
-        return tweets.stream().filter( tweet -> tweet.getName().equals( name ) ).collect( Collectors.toList() );
+    public List<Tweet> getTweets( BigInteger userId ){
+        return twitterService.getTweetByUserId( userId );
+    }
+
+    @GetMapping(path = "/user/{userId}")
+    public User getUser( @PathVariable("userId") BigInteger userId ){
+        return twitterService.findUserById( userId );
     }
 }
