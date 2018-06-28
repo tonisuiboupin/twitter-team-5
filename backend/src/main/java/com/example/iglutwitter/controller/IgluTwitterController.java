@@ -35,7 +35,7 @@ public class IgluTwitterController{
     }
 
     @GetMapping("/api/user/{userId}/tweets")
-    public List<TweetDto> getTweets( BigInteger userId ){
+    public List<TweetDto> getTweets( @PathVariable("userId") BigInteger userId ){
         return twitterService.getTweetByUserId( userId ).stream()
                 .map( tweet -> new TweetDto( tweet.getId(), tweet.getUserId(), twitterService.findUserById( tweet.getUserId() ).getUserName(),
                         tweet.getTxt() ) )
