@@ -3,8 +3,6 @@ import './App.css';
 import {Grid, Paper} from "@material-ui/core";
 import Header from "./component/Header";
 import Menu from "./component/Menu";
-import TwitterApi from "./service/TwitterApi";
-import { runInAction, observable } from 'mobx';
 import { observer } from 'mobx-react';
 
 export interface IProfile {
@@ -16,26 +14,6 @@ export interface IProfile {
 
 @observer
 class App extends React.Component /*<IAppProps> */ {
-    
-    @observable
-    private profile: IProfile;
-
-    constructor(/* props: IAppProps */) {
-        super({});// props);
-        this.getProfile();
-    }
-    
-    public getProfile = async () => {
-        try {
-            const response = await TwitterApi.getUserFromApi(1);
-            runInAction(() => {
-                console.log(response);
-                this.profile = response.data;
-            });
-        } catch (e) {
-            console.log(e);
-        }
-    };
     
     public render() {
         return (
@@ -50,14 +28,12 @@ class App extends React.Component /*<IAppProps> */ {
                 </Grid>
                 <div className="content-wrapper">
                     <Menu/>
-                    {this.profile && (
                     <div className="profile">
-                        <p>Name: {this.profile.firstName} {this.profile.lastName}</p>
+                        <p>Name: kATY pERRY</p>
                         <p>Age: 76</p>
                         <p>Phone: 112</p>
                     </div>
-                    )}
-                    <div className="tweets" onClick={this.getProfile}>
+                    <div className="tweets">
                         <div className="tweet">
                             <h3>Katy Perry</h3>
                             <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet aut cumque debitis dicta ducimus, exercitationem fuga magnam modi nostrum possimus quas quasi quisquam sed sint soluta tempora vel! Ad, voluptas.</p>
