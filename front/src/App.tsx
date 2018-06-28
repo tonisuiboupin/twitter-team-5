@@ -3,6 +3,7 @@ import './App.css';
 import {Grid, Paper} from "@material-ui/core";
 import Header from "./component/Header";
 import Tweet from "./component/Tweet";
+import TweetWriter from "./component/TweetWriter";
 import Menu from "./component/Menu";
 import { observer } from 'mobx-react';
 
@@ -54,6 +55,7 @@ class App extends React.Component /*<IAppProps> */ {
                         <p>Age: 76</p>
                         <p>Phone: 112</p>
                     </div>
+                    <TweetWriter/>
                     <div className="tweets">
                         {this.getTweets()}
                     </div>

@@ -1,4 +1,4 @@
-import {computed, observable, runInAction} from "mobx";
+import {action, computed, observable, runInAction} from "mobx";
 import TwitterApi from "../service/TwitterApi";
 import IProfile from "../modal/IProfile";
 
@@ -26,6 +26,30 @@ class TwitterStore {
             console.log(e);
         }
     };
+
+    @action
+    handleTweetMessageChange = (event: any) => {
+        this.tweetMessage = event.target.value;
+        return;
+    };
+
+    handleTweetMessageSubmit = (event: any) => {
+        alert('A tweet was submitted: ' + this.tweetMessage);
+        event.preventDefault();
+        this.tweet(this.tweetMessage);
+        return;
+    };
+
+    private tweet = async (tweetMessage: string) => {
+        try {
+            await TwitterApi.saveTweet(tweetMessage);
+        }
+        catch (e) {
+            console.log(e);
+        }
+    }
+
+
 
 }
 

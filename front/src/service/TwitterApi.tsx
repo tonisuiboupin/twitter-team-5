@@ -12,6 +12,20 @@ class TwitterApi {
     static getUserFromApi = async (userId: number): Promise<AxiosResponse<IProfile>> => {
         return axios.get(`${BASE_URL}api/user/${userId}`);
     };
+
+    static saveTweet = async (tweetMessage: string) => {
+        fetch( `${BASE_URL}api/tweet/post`, {
+            method: 'POST',
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({
+                userId: 28227219408117389584822379739,
+                txt: tweetMessage,
+            })
+        })
+    }
 }
 
 export default TwitterApi;

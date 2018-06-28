@@ -3,6 +3,9 @@ import java.math.BigInteger;
 
 import org.springframework.data.annotation.Id;
 
+import lombok.Getter;
+
+@Getter
 public class Tweet{
 
     @Id
