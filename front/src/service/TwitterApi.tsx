@@ -1,6 +1,7 @@
 import axios, { AxiosResponse } from 'axios';
 import { ITweet } from "../store/TwitterStore";
 import IProfile from "../modal/IProfile";
+import { IAuthResponse } from "../store/AuthStore";
 
 const BASE_URL = 'http://localhost:8080/';
 
@@ -16,7 +17,7 @@ class TwitterApi {
         return axios.get(`${BASE_URL}api/user/${userId}/tweets`);
     };
 
-    static authenticate = async (username: string, password: string): Promise<AxiosResponse<ITweet[]>> => {
+    static authenticate = async (username: string, password: string): Promise<AxiosResponse<IAuthResponse>> => {
         return axios.post(`${BASE_URL}api/auth/login`, {'userName': username, 'password': password});
     };
     

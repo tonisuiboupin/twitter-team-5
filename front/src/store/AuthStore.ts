@@ -1,6 +1,11 @@
 import {action, observable} from "mobx";
 import TwitterApi from "../service/TwitterApi";
 
+export interface IAuthResponse {
+    jwt: string;
+    userId: string;
+}
+
 class AuthStore {
     @observable isModalOpen: boolean;
     @observable isAuthenticated: boolean;
@@ -13,6 +18,7 @@ class AuthStore {
     @observable registerHidden: boolean;
 
     @observable authToken: string;
+    @observable userId: string;
 
     constructor() {
         this.isModalOpen = false;
@@ -58,6 +64,8 @@ class AuthStore {
         try {
             const response = await TwitterApi.authenticate(this.username, this.password);
             this.isAuthenticated = true;
+            this.authToken = response.data.jwt;
+            this.userId = response.data.userId;
             console.log(response);
         } catch (e) {
             console.log(e);
