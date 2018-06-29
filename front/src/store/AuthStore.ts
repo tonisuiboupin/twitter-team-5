@@ -6,6 +6,8 @@ class AuthStore {
     @observable username: string;
     @observable password: string;
 
+    @observable authToken: string;
+
     constructor() {
         this.isModalOpen = false;
     }
@@ -32,7 +34,12 @@ class AuthStore {
 
     @action
     authenticate = async () => {
-        await TwitterApi.authenticate(this.username, this.password);
+        try {
+            const response = await TwitterApi.authenticate(this.username, this.password);
+            console.log(response);
+        } catch (e) {
+            console.log(e);
+        }
     };
 
 }

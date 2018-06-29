@@ -7,6 +7,7 @@ import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
+
 import com.example.iglutwitter.repository.UserRepository;
 
 @Configuration
@@ -17,10 +18,10 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter{
 
     @Override
     protected void configure( HttpSecurity http ) throws Exception{
-        JWTLoginFilter filter = new JWTLoginFilter( "/login", new CustomAuthenticationManager( userRepository ), userRepository );
+        JWTLoginFilter filter = new JWTLoginFilter( "/api/auth/login", new CustomAuthenticationManager( userRepository ), userRepository );
         http.csrf().disable().authorizeRequests()
                 .antMatchers( "/" ).permitAll()
-                .antMatchers( HttpMethod.POST, "/login" ).permitAll()
+                .antMatchers( HttpMethod.POST, "/api/auth/login" ).permitAll()
                 .antMatchers( "/api/user/**" ).permitAll()
                 .anyRequest().authenticated()
                 .and()
