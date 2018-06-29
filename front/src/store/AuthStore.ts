@@ -3,6 +3,7 @@ import TwitterApi from "../service/TwitterApi";
 
 class AuthStore {
     @observable isModalOpen: boolean;
+    @observable isAuthenticated: boolean;
     @observable username: string;
     @observable password: string;
 
@@ -10,15 +11,25 @@ class AuthStore {
 
     constructor() {
         this.isModalOpen = false;
+        this.isAuthenticated = false;
+        this.username = "";
+        this.password = "";
     }
 
     @action
-    handleOpen = () => {
+    authenticate = async () => {
+        TwitterApi.authenticate(this.username, this.password)
+            .then(() => this.isAuthenticated = true)
+            .catch(err => console.error("Failed to authenticate user:" + this.username, err));
+    };
+
+    @action
+    handleModalOpen = () => {
         this.isModalOpen = true;
     };
 
     @action
-    handleClose = () => {
+    handleModalClose = () => {
         this.isModalOpen = false;
     };
 
@@ -41,7 +52,6 @@ class AuthStore {
             console.log(e);
         }
     };
-
 }
 
 export default AuthStore;

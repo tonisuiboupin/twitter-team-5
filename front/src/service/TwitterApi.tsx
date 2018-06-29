@@ -5,11 +5,6 @@ import IProfile from "../modal/IProfile";
 const BASE_URL = 'http://localhost:8080/';
 
 class TwitterApi {
-    static getHelloWorld = () => {
-        axios.get(`${BASE_URL}`)
-            .then(response => console.log(response));
-    };
-    
     static getUserFromApi = async (userId: string): Promise<AxiosResponse<IProfile>> => {
         return axios.get(`${BASE_URL}api/user/${userId}`);
     };
@@ -21,7 +16,7 @@ class TwitterApi {
     static authenticate = async (username: string, password: string): Promise<AxiosResponse<ITweet[]>> => {
         return axios.post(`${BASE_URL}api/auth/login?name=` + username + '&password=' + password);
     };
-
+    
     static saveTweet = async (tweetMessage: string) => {
         fetch( `${BASE_URL}api/tweet/post`, {
             method: 'POST',
