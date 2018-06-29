@@ -29,7 +29,7 @@ class LoginButton extends React.Component<ILoginModalProps> {
                     onClose={authStore.handleModalClose}
                 >
                     <div className="login-modal-wrapper">
-                        <div className="login-modal-title">Log in</div>
+                        <div className="login-modal-title"> Log in to Twitter</div>
                         <div className="login-modal-body">
                             {/*<input type="text" onChange={authStore.handleUsernameChange} placeholder="Enter Username" required/>*/}
                             <TextField
@@ -40,7 +40,7 @@ class LoginButton extends React.Component<ILoginModalProps> {
                                 onChange={authStore.handleUsernameChange}
                                 margin="normal"
                             />
-                            <br/>
+                            <br />
                             <TextField
                                 id="password-input"
                                 label="Password"
@@ -50,12 +50,36 @@ class LoginButton extends React.Component<ILoginModalProps> {
                                 autoComplete="current-password"
                                 margin="normal"
                             />
+                            <br />
+                            <TextField
+                                id="first-name-input"
+                                label="First name"
+                                className={"auth-first-name"}
+                                value={authStore.firstName}
+                                onChange={authStore.handleFirstNameChange}
+                                margin="normal"
+                                hidden={authStore.firstNameHidden}
+                            />
+                            <br />
+                            <TextField
+                                id="last-name-input"
+                                label="Last name"
+                                className={"auth-last-name"}
+                                value={authStore.lastName}
+                                onChange={authStore.handleLastNameChange}
+                                margin="normal"
+                                hidden={authStore.lastNameHidden}
+                            />
+
+                            <br />
+                            <Button type="submit" variant="contained" color="primary" onClick={authStore.authenticate} hidden={authStore.loginHidden}>
 
                             <br/>
                             <Button type="submit" variant="contained" color="primary"
                                     onClick={authStore.authenticate}>
                                 Log in
                             </Button>
+                            <button type="submit" onClick={authStore.authenticate}>Log in</button>
                         </div>
                         <div className="login-modal-footer">
                             Don't have an account? <a href="#">Sign up</a>
