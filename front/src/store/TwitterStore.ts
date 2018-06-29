@@ -7,6 +7,7 @@ export interface ITweet {
     userName: string;
     txt: string;
     id: number;
+    createdAt: Date;
 }
 
 class TwitterStore {
