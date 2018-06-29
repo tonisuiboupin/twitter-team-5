@@ -29,6 +29,13 @@ class AuthStore {
     @action
     handleModalOpen = () => {
         this.isModalOpen = true;
+        this.registerHidden = true;
+    };
+
+    @action
+    handleRegisterModalOpen = () => {
+        this.isModalOpen = true;
+        this.registerHidden = false;
     };
 
     @action
