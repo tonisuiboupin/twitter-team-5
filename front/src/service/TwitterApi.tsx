@@ -21,8 +21,13 @@ class TwitterApi {
         return axios.post(`${BASE_URL}api/auth/login`, {'userName': username, 'password': password});
     };
     
-    static saveTweet = async (tweetMessage: string, jwt: string) => {
-        fetch( `${BASE_URL}api/tweet/post`, {
+    static saveTweet = async (tweetMessage: string, jwt: string): Promise<AxiosResponse<ITweet[]>> => {
+        return axios.post(`${BASE_URL}api/tweet/post`, {txt: tweetMessage}, {
+            headers: { Authorization: jwt }
+        });
+        
+        
+        /* return fetch( `${BASE_URL}api/tweet/post`, {
             method: 'POST',
             headers: {
                 'Accept': 'application/json',
@@ -32,7 +37,7 @@ class TwitterApi {
             body: JSON.stringify({
                 txt: tweetMessage,
             })
-        })
+        }) */
     }
 }
 

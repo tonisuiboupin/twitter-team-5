@@ -56,14 +56,15 @@ public class IgluTwitterController{
     }
 
     @RequestMapping("/api/tweet/post")
-    public void twiiiiiit( @RequestHeader(TokenAuthenticationService.HEADER_STRING) String jwt,
-                           HttpServletRequest request ) throws IOException{
+    public List<TweetDto> twiiiiiit( @RequestHeader(TokenAuthenticationService.HEADER_STRING) String jwt,
+                                     HttpServletRequest request ) throws IOException{
         try (InputStream is = request.getInputStream()){
             String content = IOUtils.toString( is, "UTF-8" );
             TweetRequest tweet = objectMapper.readValue( content, TweetRequest.class );
             String userId = TokenAuthenticationService.getUserIdFromJWT( jwt );
             log.info( "Add twiit: {}, userId: {}", tweet, userId );
             twitterService.add( new BigInteger( userId, 10 ), tweet.getTxt() );
+            return getTweets( new BigInteger( userId ) );
         }
     }
 
