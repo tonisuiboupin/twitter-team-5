@@ -6,6 +6,12 @@ class AuthStore {
     @observable isAuthenticated: boolean;
     @observable username: string;
     @observable password: string;
+    @observable firstName: string;
+    @observable lastName: string;
+    @observable firstNameHidden: boolean;
+    @observable lastNameHidden: boolean;
+    @observable loginHidden: boolean;
+    @observable registerHidden: boolean;
 
     @observable authToken: string;
 
@@ -14,6 +20,12 @@ class AuthStore {
         this.isAuthenticated = false;
         this.username = "";
         this.password = "";
+        this.firstName = "";
+        this.lastName = "";
+        this.firstNameHidden = true;
+        this.lastNameHidden = true;
+        this.loginHidden = false;
+        this.registerHidden = true;
     }
 
     @action
@@ -45,6 +57,15 @@ class AuthStore {
         } catch (e) {
             console.log(e);
         }
+    };
+
+    @action
+    handleFirstNameChange = (event: any) => {
+        this.firstName = event.target.value;
+    };
+
+    handleLastNameChange = (event: any) => {
+        this.lastName = event.target.value;
     };
 }
 
