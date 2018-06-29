@@ -1,8 +1,8 @@
 package com.example.iglutwitter.service;
 
 import java.math.BigInteger;
+import java.time.LocalDateTime;
 import java.util.List;
-import java.util.Optional;
 
 import org.springframework.stereotype.Service;
 
@@ -21,7 +21,7 @@ public class IgluTwitterService{
     private final UserRepository userRepo;
 
     public void add( BigInteger userId, String txt ){
-        tweetRepo.insert( new Tweet( userId, txt ) );
+        tweetRepo.insert( new Tweet( userId, txt, LocalDateTime.now() ) );
     }
 
     public List<Tweet> getTweetByUserId( BigInteger userId ){
