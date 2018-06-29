@@ -20,6 +20,7 @@ import com.example.iglutwitter.authentication.TokenAuthenticationService;
 import com.example.iglutwitter.dto.TweetDto;
 import com.example.iglutwitter.model.Tweet;
 import com.example.iglutwitter.model.User;
+import com.example.iglutwitter.model.UserProfile;
 import com.example.iglutwitter.service.IgluTwitterService;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.datatype.jdk8.Jdk8Module;
@@ -80,8 +81,9 @@ public class IgluTwitterController{
     }
 
     @GetMapping(path = "/api/user/{userId}")
-    public User getUser( @PathVariable("userId") BigInteger userId ){
-        return twitterService.findUserById( userId );
+    public UserProfile getUser( @PathVariable("userId") BigInteger userId ){
+        User user = twitterService.findUserById( userId );
+        return new UserProfile( user.getUserName(), user.getFirstName(), user.getLastName() );
     }
 
 }
