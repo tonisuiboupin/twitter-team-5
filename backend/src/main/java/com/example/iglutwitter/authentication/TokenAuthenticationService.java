@@ -16,7 +16,7 @@ import java.math.BigInteger;
 class TokenAuthenticationService{
     static final long EXPIRATIONTIME = 86_400_000; // 1 day
     static final String SECRET = "ThisIsASecret";
-    static final String TOKEN_PREFIX = "Bearer";
+    static final String TOKEN_PREFIX = "Token";
     static final String HEADER_STRING = "Authorization";
 
     static void addAuthentication( HttpServletResponse res, String username, BigInteger userId ){
