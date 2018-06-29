@@ -33,7 +33,7 @@ class App extends React.Component<IAppProps> {
     public getTweets() {
         const {twitterStore} = this.props;
         return twitterStore.tweets && twitterStore.tweets.map(tweet =>
-            <Tweet username={tweet.username} txt={tweet.txt} key={tweet.id}/>
+            <Tweet username={tweet.userName} txt={tweet.txt} key={tweet.id}/>
         )
     }
 

@@ -53,7 +53,6 @@ public class IgluTwitterController{
         private final String txt;
     }
 
-    // TODO autentimise kontroll, userId peaks tulema autentimise tokenist
     @RequestMapping("/api/tweet/post")
     public void twiiiiiit( @RequestHeader(TokenAuthenticationService.HEADER_STRING) String jwt,
                            HttpServletRequest request ) throws IOException{

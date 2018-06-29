@@ -4,7 +4,7 @@ import TwitterApi from "../service/TwitterApi";
 import AuthStore from "./AuthStore";
 
 export interface ITweet {
-    username: string;
+    userName: string;
     txt: string;
     id: number;
 }
