@@ -47,7 +47,7 @@ class App extends React.Component<IAppProps> {
                 <Grid container spacing={24}>
                     <Grid item xs={12}>
                         <Paper className="cover-paper">
-                            <img src="http://via.placeholder.com/1000x400"/>
+                            <img src="http://www.cannabisworldtraders.com/wp-content/uploads/2017/11/spencer-watson-330677-2500x500.jpg"/>
                         </Paper>
                     </Grid>
                 </Grid>
