@@ -43,4 +43,8 @@ public class TokenAuthenticationService{
         }
         return null;
     }
+
+    public static String getUserIdFromJWT( String jwt ){
+        return Jwts.parser().setSigningKey( SECRET ).parseClaimsJws( jwt ).getBody().getId();
+    }
 }
