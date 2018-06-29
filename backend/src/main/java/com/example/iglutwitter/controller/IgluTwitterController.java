@@ -18,8 +18,9 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.example.iglutwitter.authentication.TokenAuthenticationService;
 import com.example.iglutwitter.dto.TweetDto;
-import com.example.iglutwitter.model.UserProfile;
+import com.example.iglutwitter.model.Tweet;
 import com.example.iglutwitter.model.User;
+import com.example.iglutwitter.model.UserProfile;
 import com.example.iglutwitter.service.IgluTwitterService;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.datatype.jdk8.Jdk8Module;
@@ -68,9 +69,14 @@ public class IgluTwitterController{
 
     @GetMapping("/api/user/{userId}/tweets")
     public List<TweetDto> getTweets( @PathVariable("userId") BigInteger userId ){
-        return twitterService.getTweetByUserId( userId ).stream()
-                .map( tweet -> new TweetDto( tweet.getId(), tweet.getUserId(), twitterService.findUserById( tweet.getUserId() ).getUserName(),
-                        tweet.getTxt() ) )
+        List<Tweet> tweets = twitterService.getTweetByUserId( userId );
+        log.info( "Tweets: {}", tweets );
+        return tweets.stream()
+                .map( tweet -> {
+                    User user = twitterService.findUserById( tweet.getUserId() );
+                    log.info( "User: {}", user );
+                    return new TweetDto( tweet.getId(), tweet.getUserId(), user.getUserName(), tweet.getTxt(), tweet.getCreatedAt() );
+                } )
                 .collect( Collectors.toList() );
     }
 
