@@ -37,10 +37,9 @@ public class AuthenticationController{
     @PostMapping(path = "/login")
     public ResponseEntity<AuthenticationResponse> authenticate( HttpServletRequest request, HttpServletResponse response ) throws IOException{
         String jwt = response.getHeader( TokenAuthenticationService.HEADER_STRING );
-        return ResponseEntity.ok( new AuthenticationResponse( jwt, "123123123" ) );
+        return ResponseEntity.ok( new AuthenticationResponse( jwt, TokenAuthenticationService.getUserIdFromJWT( jwt ) ) );
     }
 
-    //@PostMapping(params = {"name", "password"})
     @RequestMapping("/api/user/post")
     public BigInteger createAccount( @RequestParam("userName") String userName,
                                      @RequestParam("firstName") String firstname,
