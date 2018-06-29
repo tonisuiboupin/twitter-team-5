@@ -54,5 +54,6 @@ public class JWTLoginFilter extends AbstractAuthenticationProcessingFilter{
         User user = userRepository.findByUserName( auth.getName() );
         TokenAuthenticationService
                 .addAuthentication( res, auth.getName(), user.getId() );
+        chain.doFilter( req, res );
     }
 }

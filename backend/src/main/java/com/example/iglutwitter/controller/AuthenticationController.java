@@ -1,27 +1,35 @@
 package com.example.iglutwitter.controller;
 
+import java.io.IOException;
 import java.math.BigInteger;
+
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.example.iglutwitter.authentication.TokenAuthenticationService;
 import com.example.iglutwitter.service.AuthenticationService;
 
 import lombok.RequiredArgsConstructor;
 
 @RequiredArgsConstructor
 @CrossOrigin(value = "*")
-@RestController("/api/auth")
+@RestController
+@RequestMapping(path = "/api/auth")
 public class AuthenticationController{
 
     private final AuthenticationService authenticationService;
 
-    @RequestMapping(path = "/login", params = {"name", "password"})
-    public ResponseEntity<Boolean> authenticate( @RequestParam("name") String name, @RequestParam("password") String password ){
-        return ResponseEntity.ok( name != null && name.equals( password ) );
+    @PostMapping(path = "/login")
+    public ResponseEntity<String> authenticate( HttpServletRequest request, HttpServletResponse response ) throws IOException{
+        String jwt = response.getHeader( TokenAuthenticationService.HEADER_STRING );
+        return ResponseEntity.ok( jwt );
     }
 
     //@PostMapping(params = {"name", "password"})
