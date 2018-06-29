@@ -64,6 +64,7 @@ class TwitterStore {
         alert('A tweet was submitted: ' + this.tweetMessage);
         event.preventDefault();
         this.tweet(this.tweetMessage);
+        this.tweetMessage = '';
         return;
     };
 
