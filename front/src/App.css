@@ -66,13 +66,15 @@
   width: 25%;
   display: inline-block;
   vertical-align: top;
+  padding: 0 25px 0 0;
+  box-sizing: border-box;
 }
 
 .main-page{
   position: relative;
   width: 50%;
   display: inline-block;
-  padding: 0 25px;
+  padding: 0 25px 0 0;
   box-sizing: border-box;
   vertical-align: top;
 }
