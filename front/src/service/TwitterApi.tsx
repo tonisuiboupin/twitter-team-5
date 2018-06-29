@@ -21,15 +21,15 @@ class TwitterApi {
         return axios.post(`${BASE_URL}api/auth/login`, {'userName': username, 'password': password});
     };
     
-    static saveTweet = async (tweetMessage: string) => {
+    static saveTweet = async (tweetMessage: string, jwt: string) => {
         fetch( `${BASE_URL}api/tweet/post`, {
             method: 'POST',
             headers: {
                 'Accept': 'application/json',
                 'Content-Type': 'application/json',
+                'Authorization': jwt
             },
             body: JSON.stringify({
-                userId: 28227219408117389584822379739,
                 txt: tweetMessage,
             })
         })

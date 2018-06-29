@@ -7,10 +7,12 @@ import java.util.stream.Collectors;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestHeader;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.example.iglutwitter.authentication.TokenAuthenticationService;
 import com.example.iglutwitter.dto.TweetDto;
 import com.example.iglutwitter.model.User;
 import com.example.iglutwitter.service.IgluTwitterService;
@@ -31,8 +33,8 @@ public class IgluTwitterController{
 
     // TODO autentimise kontroll, userId peaks tulema autentimise tokenist
     @RequestMapping("/api/tweet/post")
-    public void twiiiiiit( @RequestParam BigInteger userId, @RequestParam String txt ){
-        twitterService.add( userId, txt );
+    public void twiiiiiit( @RequestParam String txt, @RequestHeader(TokenAuthenticationService.HEADER_STRING) String jwt ){
+        twitterService.add( new BigInteger( TokenAuthenticationService.getUserIdFromJWT( jwt ) ), txt );
     }
 
     @GetMapping("/api/user/{userId}/tweets")

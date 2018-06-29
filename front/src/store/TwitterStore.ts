@@ -77,7 +77,7 @@ class TwitterStore {
 
     private tweet = async (tweetMessage: string) => {
         try {
-            await TwitterApi.saveTweet(tweetMessage);
+            await TwitterApi.saveTweet(tweetMessage, this.authStore.authToken);
         }
         catch (e) {
             console.log(e);
