@@ -17,8 +17,9 @@ class LoginButton extends React.Component<ILoginModalProps> {
         const {authStore} = this.props;
 
         return (
-            <div>
-                <Button className="login-button" variant="contained" color="primary" onClick={authStore.handleModalOpen}>
+            <div className="login-button-wrapper">
+                <Button className="login-button" variant="contained" color="primary"
+                        onClick={authStore.handleModalOpen}>
                     Login
                 </Button>
                 <Modal
@@ -28,7 +29,7 @@ class LoginButton extends React.Component<ILoginModalProps> {
                     onClose={authStore.handleModalClose}
                 >
                     <div className="login-modal-wrapper">
-                        <div className="login-modal-title"> Log in to Twitter</div>
+                        <div className="login-modal-title">Log in</div>
                         <div className="login-modal-body">
                             {/*<input type="text" onChange={authStore.handleUsernameChange} placeholder="Enter Username" required/>*/}
                             <TextField
@@ -39,7 +40,7 @@ class LoginButton extends React.Component<ILoginModalProps> {
                                 onChange={authStore.handleUsernameChange}
                                 margin="normal"
                             />
-                            <br />
+                            <br/>
                             <TextField
                                 id="password-input"
                                 label="Password"
@@ -50,14 +51,15 @@ class LoginButton extends React.Component<ILoginModalProps> {
                                 margin="normal"
                             />
 
-                            <br />
-                            <Button type="submit" variant="contained" color="primary" onClick={authStore.authenticate}>
+                            <br/>
+                            <Button type="submit" variant="contained" color="primary"
+                                    onClick={authStore.authenticate}>
                                 Log in
                             </Button>
-                            <button type="submit" onClick={authStore.authenticate}>Log in</button>
                         </div>
-                        <div className="login-modal-footer"/>
-                        Don't have an account? Sign up >>
+                        <div className="login-modal-footer">
+                            Don't have an account? <a href="#">Sign up</a>
+                        </div>
                     </div>
                 </Modal>
             </div>
