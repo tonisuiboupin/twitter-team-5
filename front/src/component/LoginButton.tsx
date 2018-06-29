@@ -40,7 +40,7 @@ class LoginButton extends React.Component<ILoginModalProps> {
                                 onChange={authStore.handleUsernameChange}
                                 margin="normal"
                             />
-                            <br />
+                            <br/>
                             <TextField
                                 id="password-input"
                                 label="Password"
@@ -50,7 +50,7 @@ class LoginButton extends React.Component<ILoginModalProps> {
                                 autoComplete="current-password"
                                 margin="normal"
                             />
-                            <br />
+                            <br/>
                             <TextField
                                 id="first-name-input"
                                 label="First name"
@@ -60,7 +60,7 @@ class LoginButton extends React.Component<ILoginModalProps> {
                                 margin="normal"
                                 hidden={authStore.firstNameHidden}
                             />
-                            <br />
+                            <br/>
                             <TextField
                                 id="last-name-input"
                                 label="Last name"
@@ -71,18 +71,17 @@ class LoginButton extends React.Component<ILoginModalProps> {
                                 hidden={authStore.lastNameHidden}
                             />
 
-                            <br />
-                            <Button type="submit" variant="contained" color="primary" onClick={authStore.authenticate} hidden={authStore.loginHidden}>
-
                             <br/>
+                            <Button type="submit" variant="contained" color="primary" onClick={authStore.authenticate}
+                                    hidden={authStore.loginHidden}/>
                             <Button type="submit" variant="contained" color="primary"
                                     onClick={authStore.authenticate}>
                                 Log in
                             </Button>
                             <button type="submit" onClick={authStore.authenticate}>Log in</button>
-                        </div>
-                        <div className="login-modal-footer">
-                            Don't have an account? <a href="#">Sign up</a>
+                            <div className="login-modal-footer">
+                                Don't have an account? <a href="#">Sign up</a>
+                            </div>
                         </div>
                     </div>
                 </Modal>
