@@ -86,12 +86,12 @@ class AuthStore {
     };
 
     @action
-    signUp = () => {
+    toRegister = () => {
         this.registerHidden = false;
     }
 
     @action
-    back = () => {
+    toLogin = () => {
         this.registerHidden = true;
     }
 }
