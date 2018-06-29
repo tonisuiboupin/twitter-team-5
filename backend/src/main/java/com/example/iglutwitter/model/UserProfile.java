@@ -15,10 +15,12 @@ public class UserProfile{
     private String userName;
     private String firstName;
     private String lastName;
+    private String imageUrl;
 
-    public UserProfile( String userName, String firstName, String lastName ){
+    public UserProfile( String userName, String firstName, String lastName, String imageUrl ){
         this.userName = userName;
         this.firstName = firstName;
         this.lastName = lastName;
+        this.imageUrl = imageUrl;
     }
 }
