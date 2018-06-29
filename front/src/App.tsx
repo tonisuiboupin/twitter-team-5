@@ -66,10 +66,6 @@ class App extends React.Component<IAppProps> {
                         </div>
                         <div className="tweets">
                             {this.getTweets()}
-                            <div className="tweet">
-                                <div className='tweet-header'>Katy Perry <span>June 2</span></div>
-                                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aperiam dignissimos eligendi natus! Ab architecto, deleniti distinctio doloribus illum ipsam quaerat unde voluptas. Aperiam assumenda consectetur explicabo modi perspiciatis repellendus voluptatibus?</p>
-                            </div>
                         </div>
                     </div>
                     <div className="right-side-page">
