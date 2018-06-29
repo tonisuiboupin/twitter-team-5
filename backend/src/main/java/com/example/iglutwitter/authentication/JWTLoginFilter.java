@@ -1,6 +1,7 @@
 package com.example.iglutwitter.authentication;
 
 import com.example.iglutwitter.model.User;
+import com.example.iglutwitter.repository.UserRepository;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 import org.springframework.security.authentication.AuthenticationManager;
@@ -19,9 +20,12 @@ import java.util.Collections;
 
 public class JWTLoginFilter extends AbstractAuthenticationProcessingFilter{
 
-    public JWTLoginFilter( String url, AuthenticationManager authManager ){
+    private final UserRepository userRepository;
+    
+    public JWTLoginFilter( String url, AuthenticationManager authManager, UserRepository userRepository){
         super( new AntPathRequestMatcher( url ) );
         setAuthenticationManager( authManager );
+        this.userRepository = userRepository;
     }
 
     @Override
@@ -43,7 +47,8 @@ public class JWTLoginFilter extends AbstractAuthenticationProcessingFilter{
                                              HttpServletResponse res,
                                              FilterChain chain,
                                              Authentication auth ) throws IOException, ServletException{
+        User user = userRepository.findByUserName( auth.getName() );
         TokenAuthenticationService
-                .addAuthentication( res, auth.getName() );
+                .addAuthentication( res, auth.getName(), user.getId() );
     }
 }

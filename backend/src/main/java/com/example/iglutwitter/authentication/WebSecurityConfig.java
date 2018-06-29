@@ -17,7 +17,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter{
 
     @Override
     protected void configure( HttpSecurity http ) throws Exception{
-        JWTLoginFilter filter = new JWTLoginFilter( "/login", new CustomAuthenticationManager( userRepository ) );
+        JWTLoginFilter filter = new JWTLoginFilter( "/login", new CustomAuthenticationManager( userRepository ), userRepository );
         http.csrf().disable().authorizeRequests()
                 .antMatchers( "/" ).permitAll()
                 .antMatchers( HttpMethod.POST, "/login" ).permitAll()
