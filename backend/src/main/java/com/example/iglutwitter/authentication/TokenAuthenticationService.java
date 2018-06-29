@@ -11,15 +11,18 @@ import java.util.Date;
 
 import static java.util.Collections.emptyList;
 
+import java.math.BigInteger;
+
 class TokenAuthenticationService{
-    static final long EXPIRATIONTIME = 864_000_000; // 10 days
+    static final long EXPIRATIONTIME = 86_400_000; // 1 day
     static final String SECRET = "ThisIsASecret";
     static final String TOKEN_PREFIX = "Bearer";
     static final String HEADER_STRING = "Authorization";
 
-    static void addAuthentication( HttpServletResponse res, String username ){
+    static void addAuthentication( HttpServletResponse res, String username, BigInteger userId ){
         String JWT = Jwts.builder()
                 .setSubject( username )
+                .setId( userId.toString() )
                 .setExpiration( new Date( System.currentTimeMillis() + EXPIRATIONTIME ) )
                 .signWith( SignatureAlgorithm.HS512, SECRET )
                 .compact();

@@ -77,8 +77,6 @@ class TwitterStore {
         }
     }
 
-
-
 }
 
 export default TwitterStore;
