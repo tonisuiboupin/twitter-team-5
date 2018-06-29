@@ -79,7 +79,7 @@ class App extends React.Component<IAppProps> {
                             <h2>New to shitter?</h2>
                             <p>Sign up now to get your own personalized timeline!</p>
                             <Button type="submit" variant="contained" color="primary">
-                                Log in
+                                Register
                             </Button>
                         </div>
                     </div>
