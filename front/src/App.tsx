@@ -1,6 +1,6 @@
 import * as React from 'react';
 import './App.css';
-import {Grid, Paper} from "@material-ui/core";
+import {Grid} from "@material-ui/core";
 import Header from "./component/Header";
 import Tweet from "./component/Tweet";
 import TweetWriter from "./component/TweetWriter";
@@ -44,10 +44,10 @@ class App extends React.Component<IAppProps> {
                 <Header/>
                 <Grid container spacing={24}>
                     <Grid item xs={12}>
-                        <Paper className="cover-paper">
+                        <div className="cover-paper">
                             <img
                                 src="http://www.cannabisworldtraders.com/wp-content/uploads/2017/11/spencer-watson-330677-2500x500.jpg"/>
-                        </Paper>
+                        </div>
                     </Grid>
                 </Grid>
                 <div className="content-wrapper">
