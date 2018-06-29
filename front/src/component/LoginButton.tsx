@@ -57,7 +57,7 @@ class LoginButton extends React.Component<ILoginModalProps> {
             this.registerButton = <Button type="submit" variant="contained" color="primary" onClick={authStore.register}>
                 Register
             </Button>
-            this.backButton = <Button type="submit" variant="contained" color="primary" onClick={authStore.back}>
+            this.backButton = <Button type="submit" variant="contained" color="secondary" style={{margin: '5px'}} onClick={authStore.back}>
                 Back
             </Button>
         }
