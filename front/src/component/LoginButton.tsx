@@ -68,6 +68,10 @@ class LoginButton extends React.Component<ILoginModalProps> {
                                                        onClick={authStore.handleModalOpen}>
                     Login
                 </Button>}
+                {authStore.isAuthenticated && <Button className="logout-button" variant="contained" color="primary"
+                                                      onClick={authStore.handleLogout}>
+                    Logout
+                </Button>}
 
                 <Modal
                     aria-labelledby="simple-modal-title"

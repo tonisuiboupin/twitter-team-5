@@ -63,13 +63,21 @@ class AuthStore {
     };
 
     @action
+    handleLogout = (event: any) => {
+        this.isAuthenticated = false;
+        localStorage.clear();
+    };
+
+    @action
     authenticate = async () => {
         try {
             const response = await TwitterApi.authenticate(this.username, this.password);
             this.isAuthenticated = true;
             this.authToken = response.data.jwt;
             this.userId = response.data.userId;
-            this.setProfile();
+            localStorage.setItem('token', this.authToken);
+
+            this.setProfile(this.userId);
             this.handleModalClose();
             console.log(response);
         } catch (e) {
@@ -78,9 +86,9 @@ class AuthStore {
     };
 
 
-    public setProfile = async () => {
+    public setProfile = async (userId: string) => {
         try {
-            const response = await TwitterApi.getUserFromApi(this.userId);
+            const response = await TwitterApi.getUserFromApi(userId);
             runInAction(() => {
                 console.log(response);
                 this.profile = response.data;

@@ -7,9 +7,18 @@ import registerServiceWorker from './registerServiceWorker';
 import {Provider} from "mobx-react";
 import TwitterStore from "./store/TwitterStore";
 import AuthStore from "./store/AuthStore";
+import {runInAction} from "mobx";
 
 const authStore = new AuthStore();
 const twitterStore = new TwitterStore(authStore);
+
+// Check for token and update application state if required
+const token = localStorage.getItem('token');
+if (token) {
+    runInAction(() => {
+        authStore.isAuthenticated = true;
+    });
+}
 
 const Root = () => (
     <Provider twitterStore={twitterStore} authStore={authStore}>

@@ -42,7 +42,9 @@ class TwitterStore {
     
     @computed
     get getUserId(): string {
-        return window.location.pathname.substring(1).length === 0 ? this.authStore.userId : window.location.pathname.substring(1);
+        const userId = window.location.pathname.substring(1).length === 0 ? this.authStore.userId : window.location.pathname.substring(1);
+        this.authStore.setProfile(userId);
+        return userId;
     }
 
     @computed
