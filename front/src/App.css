@@ -8,7 +8,7 @@
 }
 
 .content-wrapper{
-  width: 960px;
+  width: 1200px;
   margin: 0 auto;
 }
 
@@ -25,7 +25,6 @@
   position: relative;
   min-width: 25%;
   width: 25%;
-  margin-right: 20px;
 }
 
 .profile-wrapper > img {
@@ -36,27 +35,40 @@
 }
 
 .profile{
-  margin-top: 20px;
   text-align: left;
-  max-width: 25%;
   display: inline-block;
   float: left;
 }
 
-.tweets{
-  display: inline-block;
-  max-width: 75%;
-  float: right;
-  text-align: center;
-}
-
-
-.profile-wrapper{
+.left-side-page{
   position: relative;
-  width: 300px;
+  width: 25%;
+  display: inline-block;
 }
 
-.profile-wrapper > img {
+.main-page{
+  position: relative;
+  width: 50%;
+  display: inline-block;
+  padding: 0 25px;
+  box-sizing: border-box;
+  vertical-align: top;
+}
+.right-side-page{
+  position: relative;
+  width: 25%;
+  display: inline-block;
+}
+
+
+.right-side-page > div {
+  margin: 20px 0;
+  background-color: #cdcdcd;
+  padding: 10px;
+  box-sizing: border-box;
+}
+
+.left-side-page > img {
   position: absolute;
   left: 0;
   border: 5px solid red;
@@ -85,3 +97,21 @@
 .login-modal-footer{
   margin-top: 20px;
 }
+
+.tweets{
+  margin-top: 50px;
+}
+
+.tweets > div {
+  border-bottom: 1px #999 solid;
+}
+
+.tweets > div > .tweet-header {
+  text-align: left;
+  font-weight: bold;
+}
+
+.tweets > div > .tweet-header > span{
+  font-weight: 100;
+}
+
