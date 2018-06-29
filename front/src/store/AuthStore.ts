@@ -29,6 +29,13 @@ class AuthStore {
     @action
     handleModalOpen = () => {
         this.isModalOpen = true;
+        this.registerHidden = true;
+    };
+
+    @action
+    handleRegisterModalOpen = () => {
+        this.isModalOpen = true;
+        this.registerHidden = false;
     };
 
     @action
@@ -79,12 +86,12 @@ class AuthStore {
     };
 
     @action
-    signUp = () => {
+    toRegister = () => {
         this.registerHidden = false;
     }
 
     @action
-    back = () => {
+    toLogin = () => {
         this.registerHidden = true;
     }
 }

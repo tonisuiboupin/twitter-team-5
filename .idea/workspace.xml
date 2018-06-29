@@ -4,7 +4,6 @@
     <list id="edd10ca1-bfc2-4d1e-b73c-7a35a39fc007" name="New changelist" comment="" />
     <list default="true" id="d0f4e66d-8e0b-4751-b10c-e837b8be8c0d" name="Default" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/front/src/App.css" beforeDir="false" afterPath="$PROJECT_DIR$/front/src/App.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/front/src/App.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/front/src/App.tsx" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/backend/.gradle/" />
@@ -31,23 +30,20 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="App.tsx" pinned="false" current-in-tab="false">
+      <file leaf-file-name="App.tsx" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/front/src/App.tsx">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="600">
-              <caret line="72" column="292" selection-start-line="72" selection-start-column="292" selection-end-line="72" selection-end-column="292" />
-              <folding>
-                <element signature="e#0#31#0" expanded="true" />
-              </folding>
+            <state relative-caret-position="30">
+              <caret line="2" column="12" selection-start-line="2" selection-start-column="12" selection-end-line="2" selection-end-column="12" />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="App.css" pinned="false" current-in-tab="true">
+      <file leaf-file-name="App.css" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/front/src/App.css">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="626">
-              <caret line="114" column="19" selection-start-line="114" selection-start-column="19" selection-end-line="114" selection-end-column="19" />
+            <state relative-caret-position="600">
+              <caret line="82" column="21" selection-start-line="82" selection-start-column="21" selection-end-line="82" selection-end-column="21" />
             </state>
           </provider>
         </entry>
@@ -55,8 +51,11 @@
       <file leaf-file-name="Menu.tsx" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/front/src/component/Menu.tsx">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="15">
-              <caret line="1" column="8" selection-start-line="1" selection-start-column="8" selection-end-line="1" selection-end-column="8" />
+            <state relative-caret-position="225">
+              <caret line="15" column="42" selection-start-line="15" selection-start-column="36" selection-end-line="15" selection-end-column="49" />
+              <folding>
+                <element signature="e#0#31#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -64,8 +63,8 @@
       <file leaf-file-name="LoginButton.tsx" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/front/src/component/LoginButton.tsx">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="502">
-              <caret line="76" column="28" lean-forward="true" selection-start-line="76" selection-start-column="28" selection-end-line="78" selection-end-column="38" />
+            <state relative-caret-position="937">
+              <caret line="105" column="28" lean-forward="true" selection-start-line="105" selection-start-column="28" selection-end-line="105" selection-end-column="28" />
               <folding>
                 <element signature="e#0#31#0" expanded="true" />
               </folding>
@@ -467,8 +466,8 @@
     <option name="CHANGED_PATHS">
       <list>
         <option value="$PROJECT_DIR$/front/src/component/Menu.tsx" />
-        <option value="$PROJECT_DIR$/front/src/App.tsx" />
         <option value="$PROJECT_DIR$/front/src/App.css" />
+        <option value="$PROJECT_DIR$/front/src/App.tsx" />
       </list>
     </option>
   </component>
@@ -622,11 +621,39 @@
       <option name="project" value="LOCAL" />
       <updated>1530258594990</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="tweets design">
+      <created>1530260644410</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1530260644410</updated>
+    </task>
+    <task id="LOCAL-00003" summary="tweets design">
+      <created>1530260713791</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1530260713791</updated>
+    </task>
+    <task id="LOCAL-00004" summary="menu design">
+      <created>1530261518114</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1530261518114</updated>
+    </task>
+    <task id="LOCAL-00005" summary="vertical top fix">
+      <created>1530261673114</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1530261673114</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="6226000" />
+    <option name="totallyTimeSpent" value="7338000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="28" width="2560" height="1412" extended-state="6" />
@@ -646,15 +673,15 @@
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" />
       <window_info anchor="right" id="RN Interactive" order="8" />
-      <window_info anchor="bottom" id="Messages" order="12" sideWeight="0.49893162" weight="0.32975295" />
+      <window_info anchor="bottom" id="Messages" order="12" sideWeight="0.49893162" weight="0.32920218" />
       <window_info anchor="right" id="Palette&#9;" order="3" />
       <window_info id="Image Layers" order="2" />
-      <window_info anchor="bottom" id="Java Enterprise" order="11" weight="0.32975295" />
+      <window_info anchor="bottom" id="Java Enterprise" order="11" weight="0.32920218" />
       <window_info anchor="right" id="Capture Analysis" order="3" />
-      <window_info anchor="bottom" id="Version Control" order="7" sideWeight="0.49946582" weight="0.32378003" />
+      <window_info active="true" anchor="bottom" id="Version Control" order="7" sideWeight="0.49946582" visible="true" weight="0.32378003" />
       <window_info anchor="bottom" id="Run" order="2" />
       <window_info anchor="bottom" id="Spring" order="11" />
-      <window_info active="true" anchor="bottom" id="Terminal" order="7" sideWeight="0.49946582" visible="true" weight="0.32920218" />
+      <window_info anchor="bottom" id="Terminal" order="7" sideWeight="0.49946582" weight="0.32920218" />
       <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.26273885" />
       <window_info anchor="right" id="Bean Validation" order="8" />
       <window_info id="Web" order="6" side_tool="true" />
@@ -775,13 +802,19 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="gradle springboot rakendus" />
-    <option name="LAST_COMMIT_MESSAGE" value="gradle springboot rakendus" />
+    <MESSAGE value="tweets design" />
+    <MESSAGE value="menu design" />
+    <MESSAGE value="vertical top fix" />
+    <option name="LAST_COMMIT_MESSAGE" value="vertical top fix" />
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/front/src/component/Menu.tsx">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="165">
           <caret line="11" column="18" lean-forward="true" selection-start-line="11" selection-start-column="18" selection-end-line="11" selection-end-column="18" />
+          <folding>
+            <element signature="e#0#31#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -807,6 +840,9 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="15">
           <caret line="1" column="8" selection-start-line="1" selection-start-column="8" selection-end-line="1" selection-end-column="8" />
+          <folding>
+            <element signature="e#0#31#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -874,6 +910,9 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="15">
           <caret line="1" column="8" selection-start-line="1" selection-start-column="8" selection-end-line="1" selection-end-column="8" />
+          <folding>
+            <element signature="e#0#31#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -881,9 +920,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="75">
           <caret line="5" column="16" selection-start-line="5" selection-start-column="16" selection-end-line="5" selection-end-column="16" />
-          <folding>
-            <element signature="e#0#31#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -923,6 +959,9 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="15">
           <caret line="1" column="8" selection-start-line="1" selection-start-column="8" selection-end-line="1" selection-end-column="8" />
+          <folding>
+            <element signature="e#0#31#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -941,6 +980,9 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="165">
           <caret line="11" column="18" lean-forward="true" selection-start-line="11" selection-start-column="18" selection-end-line="11" selection-end-column="18" />
+          <folding>
+            <element signature="e#0#31#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -966,6 +1008,9 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="15">
           <caret line="1" column="8" selection-start-line="1" selection-start-column="8" selection-end-line="1" selection-end-column="8" />
+          <folding>
+            <element signature="e#0#31#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -1029,27 +1074,20 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/.gitignore" />
-    <entry file="file://$PROJECT_DIR$/front/src/component/LoginButton.tsx">
+    <entry file="file://$PROJECT_DIR$/front/src/component/Menu.tsx">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="502">
-          <caret line="76" column="28" lean-forward="true" selection-start-line="76" selection-start-column="28" selection-end-line="78" selection-end-column="38" />
+        <state relative-caret-position="225">
+          <caret line="15" column="42" selection-start-line="15" selection-start-column="36" selection-end-line="15" selection-end-column="49" />
           <folding>
             <element signature="e#0#31#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/front/src/component/Menu.tsx">
+    <entry file="file://$PROJECT_DIR$/front/src/component/LoginButton.tsx">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="15">
-          <caret line="1" column="8" selection-start-line="1" selection-start-column="8" selection-end-line="1" selection-end-column="8" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/front/src/App.tsx">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="600">
-          <caret line="72" column="292" selection-start-line="72" selection-start-column="292" selection-end-line="72" selection-end-column="292" />
+        <state relative-caret-position="937">
+          <caret line="105" column="28" lean-forward="true" selection-start-line="105" selection-start-column="28" selection-end-line="105" selection-end-column="28" />
           <folding>
             <element signature="e#0#31#0" expanded="true" />
           </folding>
@@ -1058,8 +1096,15 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/front/src/App.css">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="626">
-          <caret line="114" column="19" selection-start-line="114" selection-start-column="19" selection-end-line="114" selection-end-column="19" />
+        <state relative-caret-position="600">
+          <caret line="82" column="21" selection-start-line="82" selection-start-column="21" selection-end-line="82" selection-end-column="21" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/front/src/App.tsx">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="30">
+          <caret line="2" column="12" selection-start-line="2" selection-start-column="12" selection-end-line="2" selection-end-column="12" />
         </state>
       </provider>
     </entry>

@@ -27,7 +27,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter{
         JWTLoginFilter filter = new JWTLoginFilter( "/api/auth/login", new CustomAuthenticationManager( userRepository ), userRepository );
         http.csrf().disable().cors().and().authorizeRequests()
                 .antMatchers( "/**" ).permitAll()
-                .antMatchers( HttpMethod.POST, "/api/auth/login" ).permitAll()
+                .antMatchers( "/api/auth/**" ).permitAll()
                 .anyRequest().authenticated()
                 .and()
                 .addFilterBefore( filter,
