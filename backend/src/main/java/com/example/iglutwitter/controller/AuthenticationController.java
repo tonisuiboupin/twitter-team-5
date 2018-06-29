@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.example.iglutwitter.authentication.TokenAuthenticationService;
 import com.example.iglutwitter.service.AuthenticationService;
 
+import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 
 @RequiredArgsConstructor
@@ -26,10 +27,17 @@ public class AuthenticationController{
 
     private final AuthenticationService authenticationService;
 
+    @RequiredArgsConstructor
+    @Getter
+    public static class AuthenticationResponse{
+        private final String jwt;
+        private final String userId;
+    }
+
     @PostMapping(path = "/login")
-    public ResponseEntity<String> authenticate( HttpServletRequest request, HttpServletResponse response ) throws IOException{
+    public ResponseEntity<AuthenticationResponse> authenticate( HttpServletRequest request, HttpServletResponse response ) throws IOException{
         String jwt = response.getHeader( TokenAuthenticationService.HEADER_STRING );
-        return ResponseEntity.ok( jwt );
+        return ResponseEntity.ok( new AuthenticationResponse( jwt, "123123123" ) );
     }
 
     //@PostMapping(params = {"name", "password"})
