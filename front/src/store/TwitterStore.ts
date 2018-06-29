@@ -49,12 +49,13 @@ class TwitterStore {
         return this.tweetMessage;
     }
 
-    public getProfile = async () => {
+    public setProfile = async () => {
         try {
-            const response = await TwitterApi.getUserFromApi(this.getUserId);
+            const response = await TwitterApi.getUserFromApi(this.authStore.userId);
             runInAction(() => {
                 console.log(response);
                 this.profile = response.data;
+                console.log(this.profile)
             });
         } catch (e) {
             console.log(e);

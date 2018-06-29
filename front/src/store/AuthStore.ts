@@ -1,5 +1,6 @@
-import {action, observable} from "mobx";
+import {action, observable, runInAction} from "mobx";
 import TwitterApi from "../service/TwitterApi";
+import IProfile from "../modal/IProfile";
 
 export interface IAuthResponse {
     jwt: string;
@@ -16,6 +17,8 @@ class AuthStore {
     @observable firstNameHidden: boolean;
     @observable lastNameHidden: boolean;
     @observable registerHidden: boolean;
+
+    @observable profile: IProfile;
 
     @observable authToken: string;
     @observable userId: string;
@@ -66,7 +69,23 @@ class AuthStore {
             this.isAuthenticated = true;
             this.authToken = response.data.jwt;
             this.userId = response.data.userId;
+            this.setProfile();
+            this.handleModalClose();
             console.log(response);
+        } catch (e) {
+            console.log(e);
+        }
+    };
+
+
+    public setProfile = async () => {
+        try {
+            const response = await TwitterApi.getUserFromApi(this.userId);
+            runInAction(() => {
+                console.log(response);
+                this.profile = response.data;
+                console.log(this.profile)
+            });
         } catch (e) {
             console.log(e);
         }

@@ -53,11 +53,12 @@ class App extends React.Component<IAppProps> {
                 <div className="content-wrapper">
                     <Menu/>
                     <div className="left-side-page">
-                        <div className="profile">
-                            <p>Name: kATY pERRY</p>
+                        {!!authStore.profile && <div className="profile">
+                            <p>Name: {authStore.profile.firstName + ' ' + authStore.profile.lastName}</p>
                             <p>Age: 76</p>
                             <p>Phone: 112</p>
-                        </div>
+                        </div>}
+
                     </div>
                     <div className="main-page">
                         <div className="writer">
@@ -72,13 +73,13 @@ class App extends React.Component<IAppProps> {
                         </div>
                     </div>
                     <div className="right-side-page">
-                        <div>
+                        {!authStore.isAuthenticated && <div>
                             <h2>New to shitter?</h2>
                             <p>Sign up now to get your own personalized timeline!</p>
                             <Button type="submit" variant="contained" color="primary" onClick={authStore.handleRegisterModalOpen}>
                                 Register
                             </Button>
-                        </div>
+                        </div>}
                     </div>
                 </div>
             </div>
