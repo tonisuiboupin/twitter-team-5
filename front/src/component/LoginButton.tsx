@@ -17,7 +17,7 @@ class LoginButton extends React.Component<ILoginModalProps> {
     private registerButton: any;
     private loginButton: any;
     private signUpButton: any;
-    private backButton: any;
+    private toLoginButton: any;
 
     render() {
         const {authStore} = this.props;
@@ -33,7 +33,7 @@ class LoginButton extends React.Component<ILoginModalProps> {
             this.firstNameField = null;
             this.lastNameField = null;
             this.registerButton = null;
-            this.backButton = null;
+            this.toLoginButton = null;
         }
         else {
             this.loginButton = null;
@@ -57,8 +57,8 @@ class LoginButton extends React.Component<ILoginModalProps> {
             this.registerButton = <Button type="submit" variant="contained" color="primary" onClick={authStore.register}>
                 Register
             </Button>
-            this.backButton = <Button type="submit" variant="contained" color="secondary" style={{margin: '5px'}} onClick={authStore.back}>
-                Back
+            this.toLoginButton = <Button type="submit" variant="contained" color="secondary" style={{margin: '5px'}} onClick={authStore.back}>
+                Login
             </Button>
         }
 
@@ -103,7 +103,7 @@ class LoginButton extends React.Component<ILoginModalProps> {
                             <br/>
                             {this.loginButton}
                             {this.registerButton}
-                            {this.backButton}
+                            {this.toLoginButton}
                         </div>
                         {authStore.registerHidden ? (<div className="login-modal-footer">
                             Don't have an account? {this.signUpButton}
