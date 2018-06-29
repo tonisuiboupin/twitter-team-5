@@ -65,6 +65,7 @@
   position: relative;
   width: 25%;
   display: inline-block;
+  vertical-align: top;
 }
 
 .main-page{
@@ -79,6 +80,7 @@
   position: relative;
   width: 25%;
   display: inline-block;
+  vertical-align: top;
 }
 
 
