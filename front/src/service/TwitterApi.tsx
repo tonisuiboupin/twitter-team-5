@@ -4,6 +4,9 @@ import IProfile from "../modal/IProfile";
 
 const BASE_URL = 'http://localhost:8080/';
 
+axios.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded';
+
+
 class TwitterApi {
     static getUserFromApi = async (userId: string): Promise<AxiosResponse<IProfile>> => {
         return axios.get(`${BASE_URL}api/user/${userId}`);
@@ -14,7 +17,7 @@ class TwitterApi {
     };
 
     static authenticate = async (username: string, password: string): Promise<AxiosResponse<ITweet[]>> => {
-        return axios.post(`${BASE_URL}api/auth/login?name=` + username + '&password=' + password);
+        return axios.post(`${BASE_URL}api/auth/login`, {'userName': username, 'password': password});
     };
     
     static saveTweet = async (tweetMessage: string) => {
