@@ -17,12 +17,14 @@ public class User{
     private String firstName;
     private String lastName;
     private char[] password;
+    private String imageUrl;
 
-    public User( String userName, String firstName, String lastName, char[] password ){
+    public User( String userName, String firstName, String lastName, char[] password, String imageUrl ){
         this.userName = userName;
         this.firstName = firstName;
         this.lastName = lastName;
         this.password = password;
+        this.imageUrl = imageUrl;
     }
 
     @Override

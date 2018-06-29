@@ -15,11 +15,11 @@ public class AuthenticationService{
 
     private final UserRepository userRepo;
 
-    public BigInteger createAccount( String userName, String firstname, String lastName, char[] password ){
+    public BigInteger createAccount( String userName, String firstname, String lastName, char[] password, String imageUrl ){
         String validationResult = validateUserCreation( userName, password );
         User user = new User();
         if( validationResult == null ){
-            user = userRepo.insert( new User( userName, firstname, lastName, password ) );
+            user = userRepo.insert( new User( userName, firstname, lastName, password, imageUrl ) );
         }
         return user.getId();
     }

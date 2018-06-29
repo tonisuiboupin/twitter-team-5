@@ -44,7 +44,9 @@ public class AuthenticationController{
     public BigInteger createAccount( @RequestParam("userName") String userName,
                                      @RequestParam("firstName") String firstname,
                                      @RequestParam("lastName") String lastName,
-                                     @RequestParam("password") char[] password ){
-        return authenticationService.createAccount( userName, firstname, lastName, password );
+                                     @RequestParam("password") char[] password,
+                                     @RequestParam("imageUrl") String imageUrl
+                                     ){
+        return authenticationService.createAccount( userName, firstname, lastName, password, imageUrl );
     }
 }
