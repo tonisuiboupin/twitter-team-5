@@ -16,7 +16,6 @@ import java.math.BigInteger;
 class TokenAuthenticationService{
     static final long EXPIRATIONTIME = 86_400_000; // 1 day
     static final String SECRET = "ThisIsASecret";
-    static final String TOKEN_PREFIX = "Token";
     static final String HEADER_STRING = "Authorization";
 
     static void addAuthentication( HttpServletResponse res, String username, BigInteger userId ){
@@ -26,7 +25,7 @@ class TokenAuthenticationService{
                 .setExpiration( new Date( System.currentTimeMillis() + EXPIRATIONTIME ) )
                 .signWith( SignatureAlgorithm.HS512, SECRET )
                 .compact();
-        res.addHeader( HEADER_STRING, TOKEN_PREFIX + " " + JWT );
+        res.addHeader( HEADER_STRING, JWT );
     }
 
     static Authentication getAuthentication( HttpServletRequest request ){
@@ -34,7 +33,7 @@ class TokenAuthenticationService{
         if( token != null ){
             String user = Jwts.parser()
                     .setSigningKey( SECRET )
-                    .parseClaimsJws( token.replace( TOKEN_PREFIX, "" ) )
+                    .parseClaimsJws( token )
                     .getBody()
                     .getSubject();
 
