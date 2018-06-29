@@ -11,10 +11,10 @@ class Tweet extends React.Component<ITweetProps> {
     
     render() {
         return (
-                <div className="tweet">
-                    <h3>{this.props.username}</h3>
-                    <p>{this.props.txt}</p>
-                </div>
+            <div className="tweet">
+                <div className='tweet-header'> {this.props.username} <span>June 2</span></div>
+                <p>{this.props.txt}</p>
+            </div>
         );
     }
 }
