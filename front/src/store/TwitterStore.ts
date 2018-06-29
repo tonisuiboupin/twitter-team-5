@@ -69,17 +69,24 @@ class TwitterStore {
         return;
     };
 
+    @action
     handleTweetMessageSubmit = (event: any) => {
-        alert('A tweet was submitted: ' + this.tweetMessage);
         event.preventDefault();
         this.tweet(this.tweetMessage);
         this.tweetMessage = '';
+        
         return;
     };
 
+    @action
     private tweet = async (tweetMessage: string) => {
         try {
-            await TwitterApi.saveTweet(tweetMessage, this.authStore.authToken);
+            const response = await TwitterApi.saveTweet(tweetMessage, this.authStore.authToken);
+            runInAction(() => {
+                if (response.data) {
+                    this.tweets = response.data;
+                }
+            });
         }
         catch (e) {
             console.log(e);
