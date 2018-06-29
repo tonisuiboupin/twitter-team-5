@@ -84,7 +84,7 @@ public class IgluTwitterController{
     @GetMapping(path = "/api/user/{userId}")
     public UserProfile getUser( @PathVariable("userId") BigInteger userId ){
         User user = twitterService.findUserById( userId );
-        return new UserProfile( user.getUserName(), user.getFirstName(), user.getLastName() );
+        return new UserProfile( user.getUserName(), user.getFirstName(), user.getLastName(), user.getImageUrl() );
     }
 
 }

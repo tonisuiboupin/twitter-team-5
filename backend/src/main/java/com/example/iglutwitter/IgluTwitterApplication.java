@@ -1,10 +1,13 @@
 package com.example.iglutwitter;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
+import com.example.iglutwitter.model.Tweet;
 import com.example.iglutwitter.model.User;
 import com.example.iglutwitter.repository.UserRepository;
 import com.example.iglutwitter.service.IgluTwitterService;
@@ -28,15 +31,15 @@ public class IgluTwitterApplication implements CommandLineRunner{
     @Override
     public void run( String... args ) throws Exception{
 
-        /* userRepository.deleteAll();
-        
+        userRepository.deleteAll();
+
         // save a couple of customers
-        User user1 = userRepository.save( new User( "alice", "Alice", "Smith", "asd".toCharArray() ) );
+        User user1 = userRepository.save( new User( "alice", "Alice", "Smith", "asd".toCharArray(), "https://www.upload.ee/image/8618087/bean_laden.png" ) );
         igluTwitterService.add( user1.getId(), "Test" );
         List<Tweet> tweetByUserId = igluTwitterService.getTweetByUserId( user1.getId() );
         tweetByUserId.forEach( tweet -> System.out.println( user1.toString() + "tweet:" + tweet ) );
-        userRepository.save( new User( "bob", "Bob", "Smith", "asd".toCharArray() ) );
-        */
+        userRepository.save( new User( "bob", "Bob", "Smith", "asd".toCharArray(), "http://www.zicabloc.com/wp-content/uploads/2012/04/Katy-Perry-200x200.jpeg" ) );
+
         // fetch all customers
         System.out.println( "Customers found with findAll():" );
         System.out.println( "-------------------------------" );
