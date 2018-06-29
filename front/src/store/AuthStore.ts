@@ -17,13 +17,6 @@ class AuthStore {
     }
 
     @action
-    authenticate = async () => {
-        TwitterApi.authenticate(this.username, this.password)
-            .then(() => this.isAuthenticated = true)
-            .catch(err => console.error("Failed to authenticate user:" + this.username, err));
-    };
-
-    @action
     handleModalOpen = () => {
         this.isModalOpen = true;
     };
@@ -47,6 +40,7 @@ class AuthStore {
     authenticate = async () => {
         try {
             const response = await TwitterApi.authenticate(this.username, this.password);
+            this.isAuthenticated = true
             console.log(response);
         } catch (e) {
             console.log(e);

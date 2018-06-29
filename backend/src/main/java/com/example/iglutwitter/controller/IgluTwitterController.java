@@ -29,6 +29,7 @@ public class IgluTwitterController{
         return "Greetings from Iglu Twitter!";
     }
 
+    // TODO autentimise kontroll, userId peaks tulema autentimise tokenist
     @RequestMapping("/api/tweet/post")
     public void twiiiiiit( @RequestParam BigInteger userId, @RequestParam String txt ){
         twitterService.add( userId, txt );
