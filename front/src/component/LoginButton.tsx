@@ -64,10 +64,11 @@ class LoginButton extends React.Component<ILoginModalProps> {
 
         return (
             <div className="login-button-wrapper">
-                <Button className="login-button" variant="contained" color="primary"
-                        onClick={authStore.handleModalOpen}>
+                {!authStore.isAuthenticated && <Button className="login-button" variant="contained" color="primary"
+                                                       onClick={authStore.handleModalOpen}>
                     Login
-                </Button>
+                </Button>}
+
                 <Modal
                     aria-labelledby="simple-modal-title"
                     aria-describedby="simple-modal-description"
