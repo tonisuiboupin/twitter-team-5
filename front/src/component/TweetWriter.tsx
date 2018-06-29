@@ -1,19 +1,21 @@
 import * as React from 'react';
 import {inject, observer} from 'mobx-react';
 import TwitterStore from "../store/TwitterStore";
+import AuthStore from "../store/AuthStore";
 import TextField from "@material-ui/core/TextField";
 import Button from "@material-ui/core/Button";
 
 export interface ITweetWriterProps {
     twitterStore?: TwitterStore;
+    authStore?: AuthStore;
 }
 
-@inject('twitterStore')
+@inject('twitterStore', 'authStore')
 @observer
 class TweetWriter extends React.Component<ITweetWriterProps> {
 
-    render(){
-    const {twitterStore} = this.props;
+    public getTweetWriter() {
+        const {twitterStore} = this.props;
         return (
             <>
                 <TextField
@@ -32,6 +34,10 @@ class TweetWriter extends React.Component<ITweetWriterProps> {
                 </Button>
             </>
         );
+    }
+    
+    public render(){
+        return (<>{this.props.authStore.authToken && this.getTweetWriter()}</>);
     }
 }
 
