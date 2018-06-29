@@ -10,7 +10,6 @@ class AuthStore {
     @observable lastName: string;
     @observable firstNameHidden: boolean;
     @observable lastNameHidden: boolean;
-    @observable loginHidden: boolean;
     @observable registerHidden: boolean;
 
     @observable authToken: string;
@@ -24,7 +23,6 @@ class AuthStore {
         this.lastName = "";
         this.firstNameHidden = true;
         this.lastNameHidden = true;
-        this.loginHidden = false;
         this.registerHidden = true;
     }
 
@@ -52,7 +50,18 @@ class AuthStore {
     authenticate = async () => {
         try {
             const response = await TwitterApi.authenticate(this.username, this.password);
-            this.isAuthenticated = true
+            this.isAuthenticated = true;
+            console.log(response);
+        } catch (e) {
+            console.log(e);
+        }
+    };
+
+    @action
+    register = async () => {
+        try {
+            const response = await TwitterApi.authenticate(this.username, this.password);
+            this.isAuthenticated = true;
             console.log(response);
         } catch (e) {
             console.log(e);
@@ -64,9 +73,20 @@ class AuthStore {
         this.firstName = event.target.value;
     };
 
+    @action
     handleLastNameChange = (event: any) => {
         this.lastName = event.target.value;
     };
+
+    @action
+    signUp = () => {
+        this.registerHidden = false;
+    }
+
+    @action
+    back = () => {
+        this.registerHidden = true;
+    }
 }
 
 export default AuthStore;

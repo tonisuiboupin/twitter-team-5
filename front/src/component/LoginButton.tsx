@@ -12,9 +12,55 @@ interface ILoginModalProps {
 @inject('authStore')
 @observer
 class LoginButton extends React.Component<ILoginModalProps> {
+    private firstNameField: any;
+    private lastNameField: any;
+    private registerButton: any;
+    private loginButton: any;
+    private signUpButton: any;
+    private backButton: any;
 
     render() {
         const {authStore} = this.props;
+
+        if (authStore.registerHidden) {
+            this.loginButton =
+                <Button type="submit" variant="contained" color="primary" onClick={authStore.authenticate}>
+                    Log in
+                </Button>
+            this.signUpButton = <Button type="submit" variant="contained" color="primary" onClick={authStore.signUp}>
+                Sign Up
+            </Button>
+            this.firstNameField = null;
+            this.lastNameField = null;
+            this.registerButton = null;
+            this.backButton = null;
+        }
+        else {
+            this.loginButton = null;
+            this.signUpButton = null;
+            this.firstNameField = <TextField
+                id="first-name-input"
+                label="First name"
+                className={"auth-first-name"}
+                value={authStore.firstName}
+                onChange={authStore.handleFirstNameChange}
+                margin="normal"
+            />
+            this.lastNameField = <TextField
+                id="last-name-input"
+                label="Last name"
+                className={"auth-last-name"}
+                value={authStore.lastName}
+                onChange={authStore.handleLastNameChange}
+                margin="normal"
+            />
+            this.registerButton = <Button type="submit" variant="contained" color="primary" onClick={authStore.register}>
+                Register
+            </Button>
+            this.backButton = <Button type="submit" variant="contained" color="secondary" style={{margin: '5px'}} onClick={authStore.back}>
+                Back
+            </Button>
+        }
 
         return (
             <div className="login-button-wrapper">
@@ -51,39 +97,17 @@ class LoginButton extends React.Component<ILoginModalProps> {
                                 margin="normal"
                             />
                             <br/>
-                            <TextField
-                                id="first-name-input"
-                                label="First name"
-                                className={"auth-first-name"}
-                                value={authStore.firstName}
-                                onChange={authStore.handleFirstNameChange}
-                                margin="normal"
-                                hidden={authStore.firstNameHidden}
-                            />
+                            {this.firstNameField}
                             <br/>
-                            <TextField
-                                id="last-name-input"
-                                label="Last name"
-                                className={"auth-last-name"}
-                                value={authStore.lastName}
-                                onChange={authStore.handleLastNameChange}
-                                margin="normal"
-                                hidden={authStore.lastNameHidden}
-                            />
-
+                            {this.lastNameField}
                             <br/>
-                            <Button type="submit" variant="contained" color="primary" onClick={authStore.authenticate}
-                                    hidden={authStore.loginHidden}/>
-                            <Button type="submit" variant="contained" color="primary"
-                                    onClick={authStore.authenticate}>
-                                Log in
-                            </Button>
-                            <button type="submit" onClick={authStore.authenticate}>Log in</button>
-                            <div className="login-modal-footer">
-                                Don't have an account? <a href="#">Sign up</a>
-                            </div>
+                            {this.loginButton}
+                            {this.registerButton}
+                            {this.backButton}
                         </div>
-                    </div>
+                        {authStore.registerHidden ? (<div className="login-modal-footer">
+                            Don't have an account? {this.signUpButton}
+                        </div>) : (<div/>)}</div>
                 </Modal>
             </div>
         );
