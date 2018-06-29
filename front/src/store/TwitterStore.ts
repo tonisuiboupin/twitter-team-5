@@ -1,6 +1,7 @@
 import {computed, observable, action, runInAction} from "mobx";
 import IProfile from "../modal/IProfile";
 import TwitterApi from "../service/TwitterApi";
+import AuthStore from "./AuthStore";
 
 export interface ITweet {
     username: string;
@@ -13,10 +14,11 @@ class TwitterStore {
     @observable profile: IProfile;
 
     @observable tweets: ITweet[];
-    @observable userId: string;
 
-    constructor() {
-        this.userId = window.location.pathname.substring(1);
+    private authStore: AuthStore;
+
+    constructor(authStore: AuthStore) {
+        this.authStore = authStore;
         this.tweetMessage = '';
         this.tweets = [];/* [{username:"Katy Perry", txt:"Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet aut cumque debitis dicta ducimus, exercitationem fuga magnam modi nostrum possimus quas quasi quisquam sed sint soluta tempora vel! Ad, voluptas", id: 1},
                        {username:"Toomas Lyys", txt:"Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet aut cumque debitis dicta ducimus, exercitationem fuga magnam modi nostrum possimus quas quasi quisquam sed sint soluta tempora vel! Ad, voluptas", id: 2}]; */
@@ -26,7 +28,7 @@ class TwitterStore {
     @action
     public fetchTweets = async () => {
         try {
-            const response = await TwitterApi.getUserTweets(this.userId);
+            const response = await TwitterApi.getUserTweets(this.getUserId);
             runInAction(() => {
                 if (response.data) {
                     this.tweets = response.data;
@@ -36,18 +38,24 @@ class TwitterStore {
             console.log(e);
         }
     };
+    
+    @computed
+    get getUserId(): string {
+        return window.location.pathname.substring(1).length === 0 ? this.authStore.userId : window.location.pathname.substring(1);
+    }
 
     @computed
     get getTweetMessage(): string {
         return this.tweetMessage;
     }
 
-    public getProfile = async () => {
+    public setProfile = async () => {
         try {
-            const response = await TwitterApi.getUserFromApi(this.userId);
+            const response = await TwitterApi.getUserFromApi(this.authStore.userId);
             runInAction(() => {
                 console.log(response);
                 this.profile = response.data;
+                console.log(this.profile)
             });
         } catch (e) {
             console.log(e);
@@ -70,7 +78,7 @@ class TwitterStore {
 
     private tweet = async (tweetMessage: string) => {
         try {
-            await TwitterApi.saveTweet(tweetMessage);
+            await TwitterApi.saveTweet(tweetMessage, this.authStore.authToken);
         }
         catch (e) {
             console.log(e);

@@ -27,7 +27,7 @@ class LoginButton extends React.Component<ILoginModalProps> {
                 <Button type="submit" variant="contained" color="primary" onClick={authStore.authenticate}>
                     Log in
                 </Button>
-            this.signUpButton = <Button type="submit" variant="contained" color="primary" onClick={authStore.signUp}>
+            this.signUpButton = <Button type="submit" variant="contained" color="primary" onClick={authStore.toRegister}>
                 Sign Up
             </Button>
             this.firstNameField = null;
@@ -57,17 +57,18 @@ class LoginButton extends React.Component<ILoginModalProps> {
             this.registerButton = <Button type="submit" variant="contained" color="primary" onClick={authStore.register}>
                 Register
             </Button>
-            this.toLoginButton = <Button type="submit" variant="contained" color="secondary" style={{margin: '5px'}} onClick={authStore.back}>
+            this.toLoginButton = <Button type="submit" variant="contained" color="secondary" style={{margin: '5px'}} onClick={authStore.toLogin}>
                 Login
             </Button>
         }
 
         return (
             <div className="login-button-wrapper">
-                <Button className="login-button" variant="contained" color="primary"
-                        onClick={authStore.handleModalOpen}>
+                {!authStore.isAuthenticated && <Button className="login-button" variant="contained" color="primary"
+                                                       onClick={authStore.handleModalOpen}>
                     Login
-                </Button>
+                </Button>}
+
                 <Modal
                     aria-labelledby="simple-modal-title"
                     aria-describedby="simple-modal-description"

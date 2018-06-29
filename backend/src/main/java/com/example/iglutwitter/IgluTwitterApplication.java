@@ -37,7 +37,7 @@ public class IgluTwitterApplication implements CommandLineRunner{
         User user1 = userRepository.save( new User( "alice", "Alice", "Smith", "asd".toCharArray() ) );
         igluTwitterService.add( user1.getId(), "Test" );
         List<Tweet> tweetByUserId = igluTwitterService.getTweetByUserId( user1.getId() );
-        tweetByUserId.forEach( tweet -> System.out.println( user1.toString() + "tweet:" + tweet.getTxt() ) );
+        tweetByUserId.forEach( tweet -> System.out.println( user1.toString() + "tweet:" + tweet ) );
         userRepository.save( new User( "bob", "Bob", "Smith", "asd".toCharArray() ) );
 
         // fetch all customers

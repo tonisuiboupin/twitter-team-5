@@ -8,8 +8,8 @@ import {Provider} from "mobx-react";
 import TwitterStore from "./store/TwitterStore";
 import AuthStore from "./store/AuthStore";
 
-const twitterStore = new TwitterStore();
 const authStore = new AuthStore();
+const twitterStore = new TwitterStore(authStore);
 
 const Root = () => (
     <Provider twitterStore={twitterStore} authStore={authStore}>
